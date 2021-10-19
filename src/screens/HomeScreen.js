@@ -309,7 +309,7 @@ class HomeScreen extends React.Component {
             </View>
             <TouchableOpacity
               onPress={() => {
-                this.props.navigation.navigate('NotificationScreen');
+                this.props.navigation.navigate('EmployeePreviewScreen');
               }}>
               <CImage
                 cStyle={[{height: 30, width: 30}]}

@@ -216,26 +216,6 @@ class LoginScreen extends React.Component {
                 // flex: 1,
                 flexDirection: 'row',
               }}>
-              <Text
-                style={[
-                  Styles.mTop40,
-                  Styles.padH10,
-                  Styles.padV10,
-                  {
-                    borderWidth: 0.5,
-                    borderRightColor: '#fff',
-                    borderTopLeftRadius: 5,
-                    borderBottomLeftRadius: 5,
-                    bottom: 3,
-                    backgroundColor: '#eee',
-                    height: 46.5,
-                    fontWeight: 'bold',
-                    paddingTop: 14.5,
-                    letterSpacing: 0.4,
-                  },
-                ]}>
-                +91
-              </Text>
               <TextInput
                 label="Mobile Number*"
                 mode="outlined"
@@ -249,12 +229,20 @@ class LoginScreen extends React.Component {
                 // maxLength={10}
                 placeholderTextColor="#EC6433"
                 keyboardType="numeric"
-                ref={(input) => {
-                  this.phoneNumber = input;
-                }}
+                // ref={(input) => {
+                //   this.phoneNumber = input;
+                // }}
                 onChangeText={(value) => this.setState({phone: value})}
                 value={this.state.phone}
                 style={[Styles.mTop30, Styles.bgFFF, {height: 45, flex: 1}]}
+                left={
+                  <TextInput.Affix
+                    text="+91"
+                    textStyle={{
+                      top: 2.5,
+                    }}
+                  />
+                }
               />
             </View>
 

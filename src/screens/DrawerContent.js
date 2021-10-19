@@ -135,7 +135,9 @@ export default class DrawerContent extends React.Component {
             </TouchableOpacity>
             <TouchableOpacity
               activeOpacity={0.6}
-              onPress={() => {}}
+              onPress={() => {
+                this.props.navigation.navigate('ContactUs');
+              }}
               style={[
                 Styles.row,
                 Styles.mLt20,

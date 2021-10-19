@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import {Styles, CImage, CText, CInput} from '../common';
 import DropDownMenu from '../common/DropDownMenu';
+import DocumentPicker from 'react-native-document-picker';
 import {Portal, Dialog, Button, Paragraph} from 'react-native-paper';
 import {color} from 'react-native-reanimated';
 import Modal from '../common/Modal';
@@ -32,7 +33,10 @@ const MyStatusBar = ({backgroundColor, ...props}) => (
 class EmployeePreviewScreen extends Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      selectedDocument: [],
+      docName: '',
+    };
   }
 
   componentDidMount() {
@@ -50,6 +54,23 @@ class EmployeePreviewScreen extends Component {
       this.props.navigation.navigate('footer');
 
       return true;
+    }
+  };
+
+  handleDocumentPicker = async () => {
+    try {
+      var res = await DocumentPicker.pickSingle({
+        type: [DocumentPicker.types.pdf],
+      });
+
+      console.log('res from document picker -->', res);
+
+      this.setState({
+        docName: res.name,
+        selectedDocument: res,
+      });
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -111,25 +132,32 @@ class EmployeePreviewScreen extends Component {
               {fontSize: 18, marginBottom: 10, marginLeft: 15},
               Styles.cblue,
             ]}>
-            Area Being Inspected
+            Your inspection was Approved
           </CText>
-          <TouchableOpacity
+          <Text
             style={{
-              // flex: 1,
+              fontSize: 14,
+              marginLeft: 15,
+              marginBottom: 10,
+            }}>
+            Please upload the report
+          </Text>
+          <TouchableOpacity
+            onPress={() => this.handleDocumentPicker()}
+            style={{
               flexDirection: 'row',
               marginHorizontal: 15,
               borderWidth: 0.5,
+              borderRadius: 5,
               borderColor: '#000',
               paddingHorizontal: 20,
               backgroundColor: '#eee',
             }}>
             <Text
               style={{
-                borderWidth: 0.5,
+                borderRightWidth: 0.5,
                 borderColor: '#000',
-                borderTopLeftRadius: 5,
-                borderBottomLeftRadius: 5,
-                paddingVertical: 23,
+                paddingVertical: 10,
                 paddingHorizontal: 15,
                 color: '#666',
                 left: -18,
@@ -137,6 +165,12 @@ class EmployeePreviewScreen extends Component {
               Choose File
             </Text>
 
+            <Text
+              style={{
+                top: 10,
+              }}>
+              {this.state.docName}
+            </Text>
             {/* <TextInput
               theme=""
               returnKeyType="next"

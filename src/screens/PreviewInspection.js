@@ -727,40 +727,6 @@ class PreviewInspection extends React.Component {
             style={[Styles.mBtm20]}
           />
 
-          {/* <View style={[Styles.marH15, { borderColor: '#EEE', borderWidth: 1, borderRadius: 10 }, Styles.mTop15, Styles.padV10]}>
-                        <View style={[Styles.row]}>
-                            <CText cStyle={[Styles.f16, Styles.cBlk, Styles.mLt15, { fontWeight: '600' }]}>1.</CText>
-                            <View>
-                                <CText cStyle={[Styles.f16, Styles.cBlk, { fontWeight: '600' }]}> Are the latest "Good for Construction" drawings available?</CText>
-                                <View style={[Styles.row, Styles.aitCenter, Styles.mTop15]}>
-                                    <CText cStyle={[Styles.f14, Styles.mTop5]}>ANS :</CText>
-                                    <View style={[Styles.padV5, Styles.padH10, { backgroundColor: 'green', borderRadius: 5 }, Styles.mLt10]}>
-                                        <CText cStyle={[Styles.f14, Styles.cFFF]}>Compiled</CText>
-                                    </View>
-                                </View>
-                            </View>
-                        </View>
-                    </View>
-
-                    <View style={[Styles.marH15, { borderColor: '#EEE', borderWidth: 1, borderRadius: 10 }, Styles.mTop15, Styles.padV10]}>
-                        <View style={[Styles.row]}>
-                            <CText cStyle={[Styles.f16, Styles.cBlk, Styles.mLt15, { fontWeight: '600' }]}>2.</CText>
-                            <View style={[Styles.flex1]}>
-                                <CText cStyle={[Styles.f16, Styles.cBlk, { fontWeight: '600' }]}> Is the method statement submitted and approved from client representative?</CText>
-                                <View style={[Styles.row, Styles.aitCenter, Styles.mTop15]}>
-                                    <CText cStyle={[Styles.f14, Styles.mTop5]}>ANS :</CText>
-                                    <View style={[Styles.padV5, Styles.padH10, { backgroundColor: 'red', borderRadius: 5 }, Styles.mLt10]}>
-                                        <CText cStyle={[Styles.f14, Styles.cFFF]}>Not Compiled</CText>
-                                    </View>
-                                </View>
-                                <CText cStyle={[Styles.f16, Styles.cBlk,Styles.mTop5, { fontWeight: '600' }]}>Notes :</CText>
-                                <CText cStyle={[Styles.f16,Styles.mTop5]}>Lorem ipsum is simply dummy text of the printing and typesetting industry</CText>
-
-
-                            </View>
-                        </View>
-                    </View> */}
-
           <TouchableOpacity
             onPress={() => {
               this.validationQuestions();

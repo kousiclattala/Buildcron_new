@@ -76,7 +76,8 @@ class Directory extends React.Component {
                 marginTop: 10,
                 borderRadius: 5,
               },
-            ]}>
+            ]}
+            key={index}>
             <CText
               cStyle={[
                 {marginLeft: 10, fontSize: 15, fontWeight: 'bold'},
@@ -89,14 +90,14 @@ class Directory extends React.Component {
                 {marginLeft: 10, fontSize: 12, marginVertical: 3},
                 Styles.cBlk,
               ]}>
-              BUDE0013, SafetyOfficer
+              {item.user.email}
             </CText>
             <CText cStyle={[{marginLeft: 10, fontSize: 12, color: 'blue'}]}>
-              +91- 8686808676 ,{' '}
-              <CText cStyle={[{fontSize: 12}, Styles.cBlk]}>
+              {item.user.phone_number}
+              {/* <CText cStyle={[{fontSize: 12}, Styles.cBlk]}>
                 {' '}
                 {item.user.email}
-              </CText>
+              </CText> */}
             </CText>
           </TouchableOpacity>
         </View>
@@ -117,7 +118,8 @@ class Directory extends React.Component {
               marginTop: index === 0 ? 0 : 10,
               borderRadius: 5,
             },
-          ]}>
+          ]}
+          key={index}>
           <CText
             cStyle={[
               {marginLeft: 10, fontSize: 15, fontWeight: '600'},
@@ -163,7 +165,8 @@ class Directory extends React.Component {
               marginTop: index === 0 ? 0 : 10,
               borderRadius: 5,
             },
-          ]}>
+          ]}
+          key={index}>
           <CText
             cStyle={[
               {marginLeft: 10, fontSize: 15, fontWeight: '600'},
@@ -410,6 +413,7 @@ class Directory extends React.Component {
                     cStyle={[
                       {marginLeft: 10, fontSize: 15, fontWeight: 'bold'},
                       Styles.cBlk,
+                      Styles.mBtm5,
                     ]}>
                     {
                       this.props.SignupState.selectedProject.approver.user
@@ -420,8 +424,8 @@ class Directory extends React.Component {
                     style={[
                       Styles.row,
                       Styles.aitCenter,
-                      Styles.mTop5,
                       Styles.mBtm5,
+                      {marginLeft: 10},
                     ]}>
                     <View
                       style={[
@@ -430,8 +434,6 @@ class Directory extends React.Component {
                         {
                           backgroundColor: '#10C000',
                           borderRadius: 5,
-                          marginLeft: 250,
-                          bottom: 25,
                         },
                       ]}>
                       <CText
@@ -446,14 +448,14 @@ class Directory extends React.Component {
                   </View>
                 </View>
 
-                <CText
-                  cStyle={[
-                    {marginLeft: 10, fontSize: 12, color: 'blue', bottom: 30},
-                  ]}>
-                  +91- 8686808676 ,{' '}
-                  <CText cStyle={[{fontSize: 12}, Styles.cBlk]}>
-                    {this.props.SignupState.selectedProject.approver.user.email}
-                  </CText>
+                <CText cStyle={[{fontSize: 12, marginLeft: 10}, Styles.cBlk]}>
+                  {this.props.SignupState.selectedProject.approver.user.email}
+                </CText>
+                <CText cStyle={[{marginLeft: 10, fontSize: 12, color: 'blue'}]}>
+                  {
+                    this.props.SignupState.selectedProject.approver.user
+                      .phone_number
+                  }
                 </CText>
               </TouchableOpacity>
               {this.props.SignupState.selectedProject.employee.map(

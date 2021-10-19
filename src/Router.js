@@ -24,7 +24,6 @@ import NCReportScreen from './screens/NCReportScreen';
 import Directory from './screens/Directory';
 import MyDocs from './screens/MyDocs';
 import TodoList from './screens/ToDoList';
-import ToDoList from './screens/ToDoList';
 import DailyReportScreen from './screens/DailyReportScreen';
 import SafetyInspectionScreen from './screens/SafetyInspectionScreen';
 import DrawerContent from './screens/DrawerContent';
@@ -44,6 +43,7 @@ import NotificationScreen from './screens/NotificationScreen';
 import NotificationPreviewScreen from './screens/NotificationPreviewScreen';
 import EmployeeScreen from './screens/EmployeeScreen';
 import EmployeePreviewScreen from './screens/EmployeePreviewScreen';
+import ContactUs from './screens/ContactUs';
 
 //import { createDrawerNavigator, DrawerGestureContext } from 'react-navigation-drawer';
 
@@ -235,6 +235,12 @@ const appNav = createStackNavigator(
         headerShown: false,
       },
     },
+    ContactUs: {
+      screen: ContactUs,
+      navigationOptions: {
+        headerShown: false,
+      },
+    },
   },
   {
     initialRouteName: 'LoginPinScreen',
@@ -246,7 +252,7 @@ const BottomBar = createBottomTabNavigator(
     Directory: {screen: Directory},
     MyDocs: {screen: MyDocs},
     Home: {screen: HomeScreen},
-    Todolist: {screen: ToDoList},
+    Todolist: {screen: TodoList},
     Search: {screen: SearchScreen},
   },
   {

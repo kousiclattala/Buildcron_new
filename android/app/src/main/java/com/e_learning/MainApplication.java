@@ -7,7 +7,6 @@ import com.facebook.react.ReactApplication;
 import ui.photoeditor.RNPhotoEditorPackage;
 import com.rnfs.RNFSPackage;
 import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
-import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 
 import com.oblador.keychain.KeychainPackage;

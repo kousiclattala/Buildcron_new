@@ -5,6 +5,9 @@ import {CImage} from '../common';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {ActionSignUp} from '../Store/Actions/SignUpAction';
+import axios from 'axios';
+import Config from '../Config';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // const data = [
 //   {
@@ -39,6 +42,22 @@ class DropDownMenu extends Component {
     };
   }
 
+  selectedProject = async (data) => {
+    var token = await AsyncStorage.getItem('access_token');
+
+    await axios({
+      method: 'GET',
+      url: `${Config.routes.specificProject}/${data.id}`,
+      headers: {
+        Authorization: 'JWT ' + token,
+      },
+    })
+      .then((res) => {
+        this.props.getActionSignUp({selectedProject: res.data});
+      })
+      .catch((err) => console.log(err));
+  };
+
   render() {
     return (
       <SelectDropdown
@@ -54,7 +73,7 @@ class DropDownMenu extends Component {
           //   project: selected,
           // });
 
-          this.props.getActionSignUp({selectedProject: selected});
+          this.selectedProject(selected);
         }}
         buttonTextAfterSelection={(selectedItem, index) => {
           return `${this.props.SignupState.selectedProject.name},${this.props.SignupState.selectedProject.location}`;
@@ -69,12 +88,12 @@ class DropDownMenu extends Component {
                 }}>
                 {item.name}
               </Text>
-              <Text
+              {/* <Text
                 style={{
                   color: '#000',
                 }}>
                 {item.location}
-              </Text>
+              </Text> */}
             </View>
           );
         }}

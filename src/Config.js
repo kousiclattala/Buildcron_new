@@ -15,6 +15,10 @@ var routes = {
   projectUrl:
     'http://ec2-52-66-198-112.ap-south-1.compute.amazonaws.com/buildcron/mob/api/project',
 
+  // TODO: add project id at the end
+  specificProject:
+    'http://ec2-52-66-198-112.ap-south-1.compute.amazonaws.com/buildcron/mob/api/project/read',
+
   checkListUrl:
     'http://ec2-52-66-198-112.ap-south-1.compute.amazonaws.com/buildcron/mob/api/project',
 
