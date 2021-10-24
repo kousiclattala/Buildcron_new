@@ -45,6 +45,24 @@ class OTPverificationScreen extends React.Component {
     }
   }
 
+  resendOTP = async () => {
+    await axios({
+      method: 'GET',
+      url: `${Config.routes.otpURL}/${this.props.SignupState.PhoneNumber}/`,
+      // data: {
+      //   // mobile: this.props.SignupState.PhoneNumber,
+      //   // password: '1234',
+      //   phone_number: '+91' + this.state.phone,
+      // },
+    }).then((res) => {
+      Snackbar.show({
+        text: `${res.data.success}`,
+        textColor: '#fff',
+        backgroundColor: '#FF6600',
+      });
+    });
+  };
+
   validateOTP() {
     const otp1 = this.props.SignupState.otp1;
     const otp2 = this.props.SignupState.otp2;
@@ -153,7 +171,7 @@ class OTPverificationScreen extends React.Component {
 
               <Text
                 style={[
-                  Styles.ffMbold,
+                  Styles.fWbold,
                   Styles.aslCenter,
                   {color: '#FF6600', fontSize: 18},
                   Styles.mTop15,
@@ -176,7 +194,10 @@ class OTPverificationScreen extends React.Component {
             <KeyboardAvoidingView style={{flex: 1}}>
               <View style={[Styles.row, Styles.jSpaceArd, Styles.marV15]}>
                 <TextInput
-                  style={[Styles.br5, Styles.bgWhite, {paddingLeft: 5}]}
+                  style={[
+                    Styles.brdRad5,
+                    {paddingLeft: 5, backgroundColor: 'white', borderWidth: 1},
+                  ]}
                   // theme={theme}
                   maxLength={1}
                   returnKeyType="next"
@@ -197,7 +218,10 @@ class OTPverificationScreen extends React.Component {
                   value={this.props.SignupState.otp1}
                 />
                 <TextInput
-                  style={[Styles.br5, Styles.bgWhite, {paddingLeft: 5}]}
+                  style={[
+                    Styles.brdRad5,
+                    {paddingLeft: 5, backgroundColor: 'white', borderWidth: 1},
+                  ]}
                   maxLength={1}
                   //theme={theme}
                   returnKeyType="next"
@@ -219,10 +243,9 @@ class OTPverificationScreen extends React.Component {
                 />
                 <TextInput
                   style={[
-                    Styles.br5,
-                    Styles.bw1,
-                    Styles.bgWhite,
-                    {paddingLeft: 5},
+                    Styles.brdRad5,
+                    // Styles.bw1,
+                    {paddingLeft: 5, backgroundColor: 'white', borderWidth: 1},
                   ]}
                   maxLength={1}
                   returnKeyType="next"
@@ -244,10 +267,10 @@ class OTPverificationScreen extends React.Component {
                 />
                 <TextInput
                   style={[
-                    Styles.br5,
-                    Styles.bw1,
-                    Styles.bgWhite,
-                    {paddingLeft: 5},
+                    Styles.brdRad5,
+                    // Styles.bw1,
+
+                    {paddingLeft: 5, backgroundColor: 'white', borderWidth: 1},
                   ]}
                   maxLength={1}
                   //theme={theme}
@@ -270,10 +293,10 @@ class OTPverificationScreen extends React.Component {
                 />
                 <TextInput
                   style={[
-                    Styles.br5,
-                    Styles.bw1,
-                    Styles.bgWhite,
-                    {paddingLeft: 5},
+                    Styles.brdRad5,
+                    // Styles.bw1,
+                    Styles.bgFFF,
+                    {paddingLeft: 5, borderWidth: 1},
                   ]}
                   maxLength={1}
                   // theme={theme}
@@ -295,7 +318,11 @@ class OTPverificationScreen extends React.Component {
                   value={this.props.SignupState.otp5}
                 />
                 <TextInput
-                  style={[Styles.br5, Styles.bgWhite, {paddingLeft: 5}]}
+                  style={[
+                    Styles.brdRad5,
+                    Styles.bgFFF,
+                    {paddingLeft: 5, borderWidth: 1},
+                  ]}
                   maxLength={1}
                   //  theme={theme}
                   returnKeyType="next"
@@ -320,16 +347,16 @@ class OTPverificationScreen extends React.Component {
 
             <View style={[Styles.marV10]}>
               <View style={[Styles.row, Styles.padV10, Styles.aslCenter]}>
-                <Text style={[Styles.colorBlue, Styles.f14, Styles.ffMregular]}>
+                <Text style={[Styles.cBlue, Styles.f13]}>
                   Didn't receive the code?
                 </Text>
 
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => this.resendOTP()}>
                   <CText
                     cStyle={[
                       {color: '#FF6600'},
-                      Styles.f14,
-                      Styles.ffMregular,
+                      Styles.f13,
+                      // Styles.ffMregular,
                     ]}>
                     {' '}
                     Resend OTP
@@ -345,13 +372,13 @@ class OTPverificationScreen extends React.Component {
               style={[
                 Styles.mTop40,
                 Styles.mBtm10,
-                Styles.br5,
+                Styles.brdRad5,
                 {backgroundColor: '#FF6600'},
               ]}
               activeOpacity={0.6}>
               <Text
                 style={[
-                  Styles.f14,
+                  Styles.f13,
                   Styles.padH10,
                   Styles.padV10,
                   Styles.aslCenter,

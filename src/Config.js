@@ -9,15 +9,23 @@ var routes = {
   otpRequestUrl:
     'http://ec2-52-66-198-112.ap-south-1.compute.amazonaws.com/accounts/api/request/otp',
 
+  //TODO: Note: add mobilenumber at the end
+  otpURL:
+    'http://ec2-52-66-198-112.ap-south-1.compute.amazonaws.com/accounts/api/send',
+
   otpVerifyUrl:
     'http://ec2-52-66-198-112.ap-south-1.compute.amazonaws.com/accounts/api/verify/otp',
 
   projectUrl:
     'http://ec2-52-66-198-112.ap-south-1.compute.amazonaws.com/buildcron/mob/api/project',
 
-  // TODO: add project id at the end
+  // TODO: Note: add project id at the end
   specificProject:
     'http://ec2-52-66-198-112.ap-south-1.compute.amazonaws.com/buildcron/mob/api/project/read',
+
+  // TODO: Note: when using add checklist name at the end
+  inspectionAPI:
+    'http://ec2-52-66-198-112.ap-south-1.compute.amazonaws.com/buildcron/mob/api/project/inspection',
 
   checkListUrl:
     'http://ec2-52-66-198-112.ap-south-1.compute.amazonaws.com/buildcron/mob/api/project',
@@ -28,12 +36,16 @@ var routes = {
   siteObservationAPI:
     'http://ec2-52-66-198-112.ap-south-1.compute.amazonaws.com/buildcron/mob/api/site/observation/list_or_create',
 
+  //TODO: add id at the end of url
+  siteObservationPUTAPI:
+    'http://ec2-52-66-198-112.ap-south-1.compute.amazonaws.com/buildcron/mob/api/site/observation/rud',
+
   NCReportAPI:
     'http://ec2-52-66-198-112.ap-south-1.compute.amazonaws.com/buildcron/mob/api/ncr/list_or_create',
 
-  // TODO: when using add checklist name at the end
-  inspectionAPI:
-    'http://ec2-52-66-198-112.ap-south-1.compute.amazonaws.com/buildcron/mob/api/project/inspection',
+  //TODO: add id at the end of url
+  NCReportPUTAPI:
+    'http://ec2-52-66-198-112.ap-south-1.compute.amazonaws.com/buildcron/mob/api/ncr/rud',
 
   approverGetAPI:
     'http://ec2-52-66-198-112.ap-south-1.compute.amazonaws.com/buildcron/mob/api/approver',

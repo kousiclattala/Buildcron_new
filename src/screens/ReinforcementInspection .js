@@ -57,8 +57,7 @@ class ReinforcementInspection extends React.Component {
     //   'selected checklist from state -->',
     //   this.props.SignupState.selectedChecklist,
     // );
-
-    console.log('site details -->', this.props.SignupState.siteDetails);
+    // console.log('site details -->', this.props.SignupState.siteDetails);
   }
 
   renderSpinner() {
@@ -429,7 +428,7 @@ class ReinforcementInspection extends React.Component {
         <CText
           cStyle={[
             {alignSelf: 'center', fontSize: 16, fontWeight: 'bold'},
-            Styles.cblue,
+            Styles.cBlue,
             Styles.padV15,
           ]}>
           {this.props.SignupState.checklistName}

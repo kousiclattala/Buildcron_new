@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -22,19 +22,10 @@ import {bindActionCreators} from 'redux';
 import {ActionSignUp, ScheduleInspection} from '../Store/Actions/SignUpAction';
 import {connect} from 'react-redux';
 import Config from '../Config';
-import Utils from '../common/Utils';
-//import SplashScreen from 'react-native-splash-screen';
 import axios from 'axios';
-import {TextInput, DefaultTheme} from 'react-native-paper';
 import DropDownMenu from '../common/DropDownMenu';
-
-// import DateTimePicker from '@react-native-community/datetimepicker';
-
-import DateTimePickerModal from 'react-native-modal-datetime-picker';
-
 import moment from 'moment';
 import {generateSlug} from 'random-word-slugs';
-import {htmlToPdf} from '../common/Report';
 import {DailyReportHtmlToPdf} from '../common/DailyReportPDF';
 import RNHTMLtoPDF from 'react-native-html-to-pdf';
 import FileViewer from 'react-native-file-viewer';
@@ -47,7 +38,7 @@ const MyStatusBar = ({backgroundColor, ...props}) => (
   </View>
 );
 
-class DailyReportPreview extends React.Component {
+class DailyReportPreview extends Component {
   constructor() {
     super();
     this.state = {
@@ -173,7 +164,7 @@ class DailyReportPreview extends React.Component {
           cStyle={[
             {alignSelf: 'center', fontSize: 16, fontWeight: 'bold'},
             Styles.marV10,
-            Styles.cblue,
+            Styles.cBlue,
           ]}>
           Daily Report Inspection Preview
         </CText>
@@ -219,7 +210,7 @@ class DailyReportPreview extends React.Component {
               Man Power
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               {this.props.SignupState.dailyReportData.manpower}
             </CText>
           </View>
@@ -241,7 +232,7 @@ class DailyReportPreview extends React.Component {
               Work Carried Out
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               {this.props.SignupState.dailyReportData.workCarriedOut}
             </CText>
           </View>
@@ -263,7 +254,7 @@ class DailyReportPreview extends React.Component {
               Material Used
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               {this.props.SignupState.dailyReportData.materialUsed}
             </CText>
           </View>
@@ -285,7 +276,7 @@ class DailyReportPreview extends React.Component {
               Equipment Used
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               {this.props.SignupState.dailyReportData.equipmentUsed}
             </CText>
           </View>
@@ -307,7 +298,7 @@ class DailyReportPreview extends React.Component {
               Deliveries
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               {this.props.SignupState.dailyReportData.deliveries}
             </CText>
           </View>
@@ -329,7 +320,7 @@ class DailyReportPreview extends React.Component {
               Tests and Inspections
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               {this.props.SignupState.dailyReportData.testAndInspection}
             </CText>
           </View>
@@ -351,7 +342,7 @@ class DailyReportPreview extends React.Component {
               Delays and Issues
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               {this.props.SignupState.dailyReportData.delaysAndIssues}
             </CText>
           </View>
@@ -373,7 +364,7 @@ class DailyReportPreview extends React.Component {
               Safety Observations
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               {this.props.SignupState.dailyReportData.safetyObservations}
             </CText>
           </View>
@@ -395,7 +386,7 @@ class DailyReportPreview extends React.Component {
               Project Name
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               {this.props.SignupState.selectedProject.name}
             </CText>
           </View>
@@ -416,7 +407,7 @@ class DailyReportPreview extends React.Component {
               Project Location
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               {this.props.SignupState.selectedProject.location}
             </CText>
             {/* <CText
@@ -441,7 +432,7 @@ class DailyReportPreview extends React.Component {
               Date of Inspection
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               {moment(Date.now()).format('MMM D YYYY hh:mm A')}
             </CText>
           </View>
@@ -462,7 +453,7 @@ class DailyReportPreview extends React.Component {
               Document Number
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               Doc xxx xxx xxx
             </CText>
           </View>
@@ -526,7 +517,7 @@ class DailyReportPreview extends React.Component {
                   },
                 ]}>
                 <View style={[{width: 350}, Styles.bgFFF]}>
-                  <View style={[Styles.blue]}>
+                  <View style={[Styles.cBlue]}>
                     <CText
                       cStyle={[
                         Styles.f16,
@@ -545,7 +536,7 @@ class DailyReportPreview extends React.Component {
                       src={require('../images/done.png')}
                     />
 
-                    <CText cStyle={[Styles.f14, Styles.marV10, Styles.cBlk]}>
+                    <CText cStyle={[Styles.f13, Styles.marV10, Styles.cBlk]}>
                       Your Inspection has been Successfully Completed
                     </CText>
                   </View>
@@ -553,10 +544,9 @@ class DailyReportPreview extends React.Component {
                     onPress={() => this.handleSuccessInspectionModal()}
                     activeOpacity={0.6}
                     style={[
-                      Styles.orange,
                       Styles.marH30,
                       Styles.mBtm20,
-                      {borderRadius: 5},
+                      {borderRadius: 5, backgroundColor: 'orange'},
                     ]}>
                     <CText
                       cStyle={[

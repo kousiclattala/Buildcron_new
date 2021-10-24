@@ -59,6 +59,7 @@ class SiteObservationChecklist extends React.Component {
       datetime: '',
       show: false,
       count: 0,
+      picturesPath: '',
     };
   }
 
@@ -68,7 +69,7 @@ class SiteObservationChecklist extends React.Component {
     //   this.props.SignupState.selectedChecklist,
     // );
 
-    console.log('selected proj ---->', this.props.SignupState.selectedProject);
+    // console.log('selected proj ---->', this.props.SignupState.selectedProject);
 
     BackHandler.addEventListener('hardwareBackPress', this.onBackPress);
   }
@@ -369,7 +370,6 @@ class SiteObservationChecklist extends React.Component {
     let options = {
       html: SiteObservationCheckPDF(data),
       fileName: `Site Observation-${moment(Date.now()).format('MMM D YYYY')}`,
-      base64: true,
       directory: 'Documents/buildcron',
     };
 
@@ -398,22 +398,29 @@ class SiteObservationChecklist extends React.Component {
     var token = await AsyncStorage.getItem('access_token');
 
     var data = {
+      id: this.props.navigation.getParam('id'),
       area: data.siteObservationData.areaInspected,
       contractor: {
-        name: data.siteObservationData.contractorResponsible,
+        id: this.props.SignupState.contractorData.id,
+        name: this.props.SignupState.contractorData.maker.name,
       },
       project: {
         id: this.props.SignupState.selectedProject.id,
+        name: this.props.SignupState.selectedProject.name,
       },
       category: data.siteObservationData.category,
       severity: data.siteObservationData.severityLevel,
       statement: data.siteObservationData.addObservations,
-      approver_id: this.props.SignupState.selectedProject.approver.id,
+      status: data.siteObservationChecklist,
+      shedule_date: data.scheduledDateTime,
+      report: null,
     };
 
     await axios({
       method: 'POST',
-      url: Config.routes.siteObservationAPI,
+      url: `${
+        Config.routes.siteObservationPUTAPI
+      }/${this.props.navigation.getParam('id')}`,
       headers: {
         Authorization: 'JWT ' + token,
       },
@@ -440,27 +447,27 @@ class SiteObservationChecklist extends React.Component {
     // });
   };
 
-  addScheduleDataToAsyncStorage = async (data) => {
-    try {
-      let dataArray = [];
-      dataArray.push(data);
-      let asyncData = await AsyncStorage.getItem('@ScheduledData');
+  // addScheduleDataToAsyncStorage = async (data) => {
+  //   try {
+  //     let dataArray = [];
+  //     dataArray.push(data);
+  //     let asyncData = await AsyncStorage.getItem('@ScheduledData');
 
-      if (asyncData === null) {
-        await AsyncStorage.setItem('@ScheduledData', JSON.stringify(dataArray));
-      } else {
-        let parsedData = JSON.parse(asyncData);
-        parsedData.push(data);
+  //     if (asyncData === null) {
+  //       await AsyncStorage.setItem('@ScheduledData', JSON.stringify(dataArray));
+  //     } else {
+  //       let parsedData = JSON.parse(asyncData);
+  //       parsedData.push(data);
 
-        await AsyncStorage.setItem(
-          '@ScheduledData',
-          JSON.stringify(parsedData),
-        );
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  //       await AsyncStorage.setItem(
+  //         '@ScheduledData',
+  //         JSON.stringify(parsedData),
+  //       );
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   render() {
     return (
@@ -510,7 +517,7 @@ class SiteObservationChecklist extends React.Component {
         <CText
           cStyle={[
             {alignSelf: 'center', fontSize: 16, fontWeight: 'bold'},
-            Styles.cblue,
+            Styles.cBlue,
             Styles.padV15,
           ]}>
           Site Observation Report
@@ -533,7 +540,7 @@ class SiteObservationChecklist extends React.Component {
               Area Being Inspected
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               {this.props.SignupState.siteObservationData.areaInspected}
             </CText>
           </View>
@@ -555,7 +562,7 @@ class SiteObservationChecklist extends React.Component {
               Contractor Responsible
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               {this.props.SignupState.siteObservationData.contractorResponsible}
             </CText>
           </View>
@@ -577,7 +584,7 @@ class SiteObservationChecklist extends React.Component {
               Category
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               {this.props.SignupState.siteObservationData.category}
             </CText>
             <View
@@ -670,7 +677,7 @@ class SiteObservationChecklist extends React.Component {
               Site Observations
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               {this.props.SignupState.siteObservationData.addObservations}
             </CText>
           </View>
@@ -692,7 +699,7 @@ class SiteObservationChecklist extends React.Component {
               Project Name
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               {this.props.SignupState.selectedProject.name}
             </CText>
           </View>
@@ -714,7 +721,7 @@ class SiteObservationChecklist extends React.Component {
               Project Location
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               {this.props.SignupState.selectedProject.location}
             </CText>
             {/* <CText
@@ -740,7 +747,7 @@ class SiteObservationChecklist extends React.Component {
               Date of Inspection
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               {moment(Date.now()).format('MMM D YYYY hh:mm A')}
             </CText>
           </View>
@@ -762,7 +769,7 @@ class SiteObservationChecklist extends React.Component {
               Document Number
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               Doc xxx xxx xxx
             </CText>
           </View>
@@ -989,7 +996,7 @@ class SiteObservationChecklist extends React.Component {
                   },
                 ]}>
                 <View style={[{width: 350}, Styles.bgFFF]}>
-                  <View style={[Styles.blue]}>
+                  <View style={[Styles.cBlue]}>
                     <CText
                       cStyle={[
                         Styles.f16,
@@ -1008,7 +1015,7 @@ class SiteObservationChecklist extends React.Component {
                       src={require('../images/done.png')}
                     />
 
-                    <CText cStyle={[Styles.f14, Styles.marV10, Styles.cBlk]}>
+                    <CText cStyle={[Styles.f13, Styles.marV10, Styles.cBlk]}>
                       Your Inspection has been Successfully Completed
                     </CText>
                   </View>
@@ -1016,10 +1023,9 @@ class SiteObservationChecklist extends React.Component {
                     onPress={() => this.handleSuccessInspectionModal()}
                     activeOpacity={0.6}
                     style={[
-                      Styles.orange,
                       Styles.marH30,
                       Styles.mBtm20,
-                      {borderRadius: 5},
+                      {borderRadius: 5, backgroundColor: 'orange'},
                     ]}>
                     <CText
                       cStyle={[
@@ -1075,7 +1081,7 @@ class SiteObservationChecklist extends React.Component {
                     {width: Dimensions.get('window').width - 40},
                     Styles.bgFFF,
                   ]}>
-                  <View style={[Styles.blue]}>
+                  <View style={[Styles.cBlue]}>
                     <CText
                       cStyle={[
                         Styles.f16,
@@ -1119,7 +1125,7 @@ class SiteObservationChecklist extends React.Component {
                       ]}
                       onPress={() => this.setMode()}>
                       <CText cStyle={[Styles.mLt10, {fontWeight: '600'}]}>
-                        {this.state.date == ''
+                        {this.state.datetime == ''
                           ? `${new Date().getDate()}-${new Date().getMonth()}-${new Date().getFullYear()}`
                           : this.state.datetime}
                       </CText>
@@ -1175,10 +1181,9 @@ class SiteObservationChecklist extends React.Component {
                     onPress={() => this.handleScheduledInspectionData()}
                     activeOpacity={0.6}
                     style={[
-                      Styles.orange,
                       Styles.marH30,
                       Styles.mBtm20,
-                      {borderRadius: 5},
+                      {borderRadius: 5, backgroundColor: 'orange'},
                     ]}>
                     <CText
                       cStyle={[
@@ -1230,7 +1235,7 @@ class SiteObservationChecklist extends React.Component {
                   },
                 ]}>
                 <View style={[{width: 350}, Styles.bgFFF]}>
-                  <View style={[Styles.blue]}>
+                  <View style={[Styles.cBlue]}>
                     <CText
                       cStyle={[
                         Styles.f16,
@@ -1245,13 +1250,13 @@ class SiteObservationChecklist extends React.Component {
 
                   <View
                     style={[Styles.aitCenter, Styles.aslCenter, Styles.marV30]}>
-                    <CText cStyle={[Styles.f14, Styles.cBlk]}>
+                    <CText cStyle={[Styles.f13, Styles.cBlk]}>
                       It look like you have selected
                     </CText>
-                    <CText cStyle={[Styles.f14, Styles.cBlk, Styles.aslCenter]}>
+                    <CText cStyle={[Styles.f13, Styles.cBlk, Styles.aslCenter]}>
                       "not compiled" for questions
                     </CText>
-                    <CText cStyle={[Styles.f14, Styles.cBlk, Styles.aslCenter]}>
+                    <CText cStyle={[Styles.f13, Styles.cBlk, Styles.aslCenter]}>
                       select a time for re-inspection
                     </CText>
                   </View>
@@ -1264,10 +1269,9 @@ class SiteObservationChecklist extends React.Component {
                     }}
                     activeOpacity={0.6}
                     style={[
-                      Styles.orange,
                       Styles.marH30,
                       Styles.mBtm20,
-                      {borderRadius: 5},
+                      {borderRadius: 5, backgroundColor: 'orange'},
                     ]}>
                     <CText
                       cStyle={[

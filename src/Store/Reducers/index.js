@@ -1,12 +1,12 @@
 import {combineReducers} from 'redux';
 
-import SignUpreducer from './SignUpreducer';
 import ScheduleInspection from './ScheduleInspection';
 import ReportReducer from './ReportInspection';
 import ReinforcementData from './ReinforcementData';
+import SignupReducer from './SignUpreducer';
 
 const reducers = combineReducers({
-  SignUp: SignUpreducer,
+  SignUp: SignupReducer,
   ScheduleInspection: ScheduleInspection,
   ReportInspection: ReportReducer,
   ReinforcementData: ReinforcementData,

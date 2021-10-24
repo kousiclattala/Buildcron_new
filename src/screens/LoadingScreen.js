@@ -6,9 +6,6 @@ import {CSpinner} from '../common';
 class LoadingScreen extends Component {
   constructor() {
     super();
-    this.state = {
-      token: '',
-    };
   }
 
   componentDidMount() {
@@ -20,12 +17,13 @@ class LoadingScreen extends Component {
       const token = await AsyncStorage.getItem('access_token');
 
       if (token === null) {
-        this.props.navigation.navigate('auth');
+        this.props.navigation.navigate('LoginScreen');
       } else {
-        this.props.navigation.navigate('appNav');
+        this.props.navigation.navigate('LoginPinScreen');
       }
     } catch (error) {
       console.log(error);
+      alert(error);
     }
   };
 

@@ -95,7 +95,7 @@ class NCReportPreview extends React.Component {
               {item.question}
             </CText>
             <View style={[Styles.row, Styles.aitCenter, Styles.mTop15]}>
-              <CText cStyle={[Styles.f14, Styles.mTop5]}>ANS :</CText>
+              <CText cStyle={[Styles.f13, Styles.mTop5]}>ANS :</CText>
               <View
                 style={[
                   Styles.padV5,
@@ -107,7 +107,7 @@ class NCReportPreview extends React.Component {
                   },
                   Styles.mLt10,
                 ]}>
-                <CText cStyle={[Styles.f14, Styles.cFFF]}>{item.status}</CText>
+                <CText cStyle={[Styles.f13, Styles.cFFF]}>{item.status}</CText>
               </View>
             </View>
             <View
@@ -413,7 +413,7 @@ class NCReportPreview extends React.Component {
           cStyle={[
             {alignSelf: 'center', fontSize: 16, fontWeight: 'bold'},
             Styles.marV10,
-            Styles.cblue,
+            Styles.cBlue,
           ]}>
           Non Compliance Report (NCR) Preview
         </CText>
@@ -435,7 +435,7 @@ class NCReportPreview extends React.Component {
               Area Being Inspected
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               {this.props.SignupState.NCReportData.areaInspected}
             </CText>
           </View>
@@ -517,7 +517,7 @@ class NCReportPreview extends React.Component {
               Contractor Responsible
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               {this.props.SignupState.NCReportData.contractorResponsible}
             </CText>
           </View>
@@ -539,7 +539,7 @@ class NCReportPreview extends React.Component {
               Category
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               {this.props.SignupState.NCReportData.category}
             </CText>
             <View
@@ -642,7 +642,7 @@ class NCReportPreview extends React.Component {
               Root Cause
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               {this.props.SignupState.NCReportData.rootCause}
             </CText>
           </View>
@@ -664,7 +664,7 @@ class NCReportPreview extends React.Component {
               Contractor Clause No.
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               {this.props.SignupState.NCReportData.contractorClauseNo}
             </CText>
           </View>
@@ -686,7 +686,7 @@ class NCReportPreview extends React.Component {
               Recommended Corrective Action
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               {this.props.SignupState.NCReportData.recommendedCorrectiveAction}
             </CText>
           </View>
@@ -708,7 +708,7 @@ class NCReportPreview extends React.Component {
               Project Name
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               {this.props.SignupState.selectedProject.name}
             </CText>
           </View>
@@ -729,7 +729,7 @@ class NCReportPreview extends React.Component {
               Project Location
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               {this.props.SignupState.selectedProject.location}
             </CText>
             {/* <CText
@@ -754,7 +754,7 @@ class NCReportPreview extends React.Component {
               Date of Inspection
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               {moment(Date.now()).format('MMM D YYYY hh:mm A')}
             </CText>
           </View>
@@ -775,7 +775,7 @@ class NCReportPreview extends React.Component {
               Document Number
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               Doc xxx xxx xxx
             </CText>
           </View>
@@ -800,7 +800,7 @@ class NCReportPreview extends React.Component {
                   ?
                 </CText>
                 <View style={[Styles.row, Styles.aitCenter, Styles.mTop15]}>
-                  <CText cStyle={[Styles.f14, Styles.mTop5, Styles.marH15]}>
+                  <CText cStyle={[Styles.f13, Styles.mTop5, Styles.marH15]}>
                     ANS :
                   </CText>
                   <View
@@ -816,7 +816,7 @@ class NCReportPreview extends React.Component {
                       },
                       Styles.mLt10,
                     ]}>
-                    <CText cStyle={[Styles.f14, Styles.cFFF]}>
+                    <CText cStyle={[Styles.f13, Styles.cFFF]}>
                       {this.props.SignupState.siteNCRChecklist}
                     </CText>
                   </View>
@@ -951,7 +951,7 @@ class NCReportPreview extends React.Component {
                   },
                 ]}>
                 <View style={[{width: 350}, Styles.bgFFF]}>
-                  <View style={[Styles.blue]}>
+                  <View style={[Styles.cBlue]}>
                     <CText
                       cStyle={[
                         Styles.f16,
@@ -970,7 +970,7 @@ class NCReportPreview extends React.Component {
                       src={require('../images/done.png')}
                     />
 
-                    <CText cStyle={[Styles.f14, Styles.marV10, Styles.cBlk]}>
+                    <CText cStyle={[Styles.f13, Styles.marV10, Styles.cBlk]}>
                       Your Inspection has been Successfully Completed
                     </CText>
                   </View>
@@ -978,10 +978,9 @@ class NCReportPreview extends React.Component {
                     onPress={() => this.handleSuccessInspectionModal()}
                     activeOpacity={0.6}
                     style={[
-                      Styles.orange,
                       Styles.marH30,
                       Styles.mBtm20,
-                      {borderRadius: 5},
+                      {borderRadius: 5, color: 'orange'},
                     ]}>
                     <CText
                       cStyle={[
@@ -1035,7 +1034,7 @@ class NCReportPreview extends React.Component {
                     {width: Dimensions.get('window').width - 40},
                     Styles.bgFFF,
                   ]}>
-                  <View style={[Styles.blue]}>
+                  <View style={[Styles.cBlue]}>
                     <CText
                       cStyle={[
                         Styles.f16,
@@ -1079,7 +1078,7 @@ class NCReportPreview extends React.Component {
                       ]}
                       onPress={() => this.setMode()}>
                       <CText cStyle={[Styles.mLt10, {fontWeight: '600'}]}>
-                        {this.state.date == ''
+                        {this.state.datetime == ''
                           ? `${new Date().getDate()}-${new Date().getMonth()}-${new Date().getFullYear()}`
                           : this.state.datetime}
                       </CText>
@@ -1135,10 +1134,9 @@ class NCReportPreview extends React.Component {
                     onPress={() => this.handleScheduledInspectionData()}
                     activeOpacity={0.6}
                     style={[
-                      Styles.orange,
                       Styles.marH30,
                       Styles.mBtm20,
-                      {borderRadius: 5},
+                      {borderRadius: 5, backgroundColor: 'orange'},
                     ]}>
                     <CText
                       cStyle={[
@@ -1188,7 +1186,7 @@ class NCReportPreview extends React.Component {
                   },
                 ]}>
                 <View style={[{width: 350}, Styles.bgFFF]}>
-                  <View style={[Styles.blue]}>
+                  <View style={[Styles.cBlue]}>
                     <CText
                       cStyle={[
                         Styles.f16,
@@ -1203,13 +1201,13 @@ class NCReportPreview extends React.Component {
 
                   <View
                     style={[Styles.aitCenter, Styles.aslCenter, Styles.marV30]}>
-                    <CText cStyle={[Styles.f14, Styles.cBlk]}>
+                    <CText cStyle={[Styles.f13, Styles.cBlk]}>
                       It look like you have selected
                     </CText>
-                    <CText cStyle={[Styles.f14, Styles.cBlk, Styles.aslCenter]}>
+                    <CText cStyle={[Styles.f13, Styles.cBlk, Styles.aslCenter]}>
                       "not compiled" for questions
                     </CText>
-                    <CText cStyle={[Styles.f14, Styles.cBlk, Styles.aslCenter]}>
+                    <CText cStyle={[Styles.f13, Styles.cBlk, Styles.aslCenter]}>
                       select a time for re-inspection
                     </CText>
                   </View>
@@ -1222,10 +1220,9 @@ class NCReportPreview extends React.Component {
                     }}
                     activeOpacity={0.6}
                     style={[
-                      Styles.orange,
                       Styles.marH30,
                       Styles.mBtm20,
-                      {borderRadius: 5},
+                      {borderRadius: 5, backgroundColor: 'orange'},
                     ]}>
                     <CText
                       cStyle={[

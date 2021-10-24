@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -35,7 +35,7 @@ const MyStatusBar = ({backgroundColor, ...props}) => (
   </View>
 );
 
-class Directory extends React.Component {
+class Directory extends Component {
   constructor() {
     super();
     this.state = {
@@ -247,7 +247,7 @@ class Directory extends React.Component {
           cStyle={[
             {alignSelf: 'center', fontSize: 16},
             Styles.marV10,
-            Styles.cblue,
+            Styles.cBlue,
           ]}>
           Project Directory
         </CText>
@@ -438,7 +438,7 @@ class Directory extends React.Component {
                       ]}>
                       <CText
                         cStyle={[
-                          Styles.f14,
+                          Styles.f13,
                           Styles.cFFF,
                           {fontWeight: 'bold'},
                         ]}>

@@ -6,7 +6,7 @@ const InitialState = {
 
 const ReportReducer = (state = InitialState, action) => {
   switch (action.type) {
-    case 'REPORTDATA':
+    case REPORTDATA:
       return Object.assign({}, state, action.payload);
 
     default:

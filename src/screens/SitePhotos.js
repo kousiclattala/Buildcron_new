@@ -43,7 +43,7 @@ class SitePhotos extends Component {
   }
 
   componentDidMount() {
-    this.getAllKeys();
+    // this.getAllKeys();
 
     this.getPhotos();
     BackHandler.addEventListener('hardwareBackPress', this.onBackPress);
@@ -173,7 +173,7 @@ class SitePhotos extends Component {
           cStyle={[
             {alignSelf: 'center', fontSize: 16},
             Styles.marV10,
-            Styles.cblue,
+            Styles.cBlue,
           ]}>
           Site Photos
         </CText>

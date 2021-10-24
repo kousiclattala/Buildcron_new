@@ -178,7 +178,7 @@ const InitialState = {
   weatherEffected: '',
 };
 
-function WaterBillPaymentreducer(state = InitialState, action) {
+function SignupReducer(state = InitialState, action) {
   switch (action.type) {
     case ACTIONSIGNUP:
       return Object.assign({}, state, action.payload);
@@ -189,4 +189,4 @@ function WaterBillPaymentreducer(state = InitialState, action) {
   }
 }
 
-export default WaterBillPaymentreducer;
+export default SignupReducer;

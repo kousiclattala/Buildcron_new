@@ -226,7 +226,7 @@ class ReinforcementChecklist extends React.Component {
           <CText
             cStyle={[
               {alignSelf: 'center', fontSize: 16, fontWeight: 'bold'},
-              Styles.cblue,
+              Styles.cBlue,
               Styles.marV10,
             ]}>
             {this.props.SignupState.checklistName}
@@ -241,7 +241,7 @@ class ReinforcementChecklist extends React.Component {
             <CText
               cStyle={[
                 {fontSize: 14, marginTop: 10, marginLeft: 15},
-                Styles.cblue,
+                Styles.cBlue,
               ]}>
               Area Being Inspected
             </CText>
@@ -254,9 +254,9 @@ class ReinforcementChecklist extends React.Component {
               placeholderTextColor="#A8A8A8"
               keyboardType="default"
               multiline={true}
-              ref={(input) => {
-                this.checklistAddress = input;
-              }}
+              // ref={(input) => {
+              //   this.checklistAddress = input;
+              // }}
               onChangeText={(value) =>
                 this.props.getActionSignUp({checklistAddress: value})
               }
@@ -265,7 +265,7 @@ class ReinforcementChecklist extends React.Component {
                 Styles.padV5,
                 Styles.marH15,
                 Styles.bgFFF,
-                Styles.f14,
+                Styles.f13,
                 {fontWeight: '500'},
               ]}
             />
@@ -281,7 +281,7 @@ class ReinforcementChecklist extends React.Component {
             <CText
               cStyle={[
                 {fontSize: 14, marginTop: 10, marginLeft: 15},
-                Styles.cblue,
+                Styles.cBlue,
               ]}>
               Inspection Material Quantity
             </CText>
@@ -305,7 +305,7 @@ class ReinforcementChecklist extends React.Component {
                 cStyle={[
                   Styles.mLt10,
                   Styles.cAsh,
-                  Styles.f14,
+                  Styles.f13,
                   {
                     color: this.props.SignupState.materialname
                       ? '#000'
@@ -331,9 +331,9 @@ class ReinforcementChecklist extends React.Component {
                 placeholderTextColor="#A8A8A8"
                 keyboardType="numeric"
                 // multiline={true}
-                ref={(input) => {
-                  this.inspectionQuantity = input;
-                }}
+                // ref={(input) => {
+                //   this.inspectionQuantity = input;
+                // }}
                 onChangeText={(value) =>
                   this.props.getActionSignUp({inspectionQuantity: value})
                 }
@@ -343,7 +343,7 @@ class ReinforcementChecklist extends React.Component {
                   Styles.marH15,
                   {flex: 0.6, height: 40},
                   Styles.bgFFF,
-                  Styles.f14,
+                  Styles.f13,
                 ]}
               />
               <TextInput
@@ -356,9 +356,9 @@ class ReinforcementChecklist extends React.Component {
                 placeholderTextColor="#A8A8A8"
                 keyboardType="default"
                 // multiline={true}
-                ref={(input) => {
-                  this.UOM = input;
-                }}
+                // ref={(input) => {
+                //   this.UOM = input;
+                // }}
                 onChangeText={(value) =>
                   this.props.getActionSignUp({UOM: value})
                 }
@@ -368,7 +368,7 @@ class ReinforcementChecklist extends React.Component {
                   Styles.marH15,
                   {flex: 0.4, height: 40},
                   Styles.bgFFF,
-                  Styles.f14,
+                  Styles.f13,
                 ]}
               />
             </View>
@@ -384,7 +384,7 @@ class ReinforcementChecklist extends React.Component {
             <CText
               cStyle={[
                 {fontSize: 14, marginTop: 10, marginLeft: 15},
-                Styles.cblue,
+                Styles.cBlue,
               ]}>
               Contractor Responsible
             </CText>
@@ -408,7 +408,7 @@ class ReinforcementChecklist extends React.Component {
                 cStyle={[
                   Styles.mLt10,
                   Styles.cAsh,
-                  Styles.f14,
+                  Styles.f13,
                   {
                     color: this.props.SignupState.contractor
                       ? '#000'
@@ -579,7 +579,7 @@ class ReinforcementChecklist extends React.Component {
                   {width: Dimensions.get('window').width - 50, height: 400},
                   Styles.bgFFF,
                 ]}>
-                <View style={[Styles.blue]}>
+                <View style={[Styles.cBlue]}>
                   <View
                     style={[
                       Styles.row,

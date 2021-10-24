@@ -101,7 +101,7 @@ class NotificationScreen extends Component {
         ]}
         key={index}>
         <CText
-          cStyle={[{marginLeft: 10, fontSize: 13, flex: 0.95}, Styles.cblue]}>
+          cStyle={[{marginLeft: 10, fontSize: 13, flex: 0.95}, Styles.cBlue]}>
           {item.data.type}
         </CText>
         <CImage
@@ -166,7 +166,7 @@ class NotificationScreen extends Component {
           cStyle={[
             {alignSelf: 'center', fontSize: 16},
             Styles.marV10,
-            Styles.cblue,
+            Styles.cBlue,
           ]}>
           Notification Page
         </CText>
@@ -206,7 +206,7 @@ class NotificationScreen extends Component {
             Styles.aitCenter,
           ]}>
           <CText
-            cStyle={[{marginLeft: 10, fontSize: 13, flex: 0.95}, Styles.cblue]}>
+            cStyle={[{marginLeft: 10, fontSize: 13, flex: 0.95}, Styles.cBlue]}>
             Safety
           </CText>
           <CImage
@@ -231,7 +231,7 @@ class NotificationScreen extends Component {
             Styles.aitCenter,
           ]}>
           <CText
-            cStyle={[{marginLeft: 10, fontSize: 13, flex: 0.95}, Styles.cblue]}>
+            cStyle={[{marginLeft: 10, fontSize: 13, flex: 0.95}, Styles.cBlue]}>
             Quality
           </CText>
           <CImage
@@ -256,7 +256,7 @@ class NotificationScreen extends Component {
             Styles.aitCenter,
           ]}>
           <CText
-            cStyle={[{marginLeft: 10, fontSize: 13, flex: 0.95}, Styles.cblue]}>
+            cStyle={[{marginLeft: 10, fontSize: 13, flex: 0.95}, Styles.cBlue]}>
             Site Observation
           </CText>
           <CImage
@@ -281,7 +281,7 @@ class NotificationScreen extends Component {
             Styles.aitCenter,
           ]}>
           <CText
-            cStyle={[{marginLeft: 10, fontSize: 13, flex: 0.95}, Styles.cblue]}>
+            cStyle={[{marginLeft: 10, fontSize: 13, flex: 0.95}, Styles.cBlue]}>
             NCReport
           </CText>
           <CImage
@@ -306,7 +306,7 @@ class NotificationScreen extends Component {
             Styles.aitCenter,
           ]}>
           <CText
-            cStyle={[{marginLeft: 10, fontSize: 13, flex: 0.95}, Styles.cblue]}>
+            cStyle={[{marginLeft: 10, fontSize: 13, flex: 0.95}, Styles.cBlue]}>
             Daily Report
           </CText>
           <CImage

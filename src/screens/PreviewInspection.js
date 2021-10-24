@@ -127,7 +127,7 @@ class PreviewInspection extends React.Component {
               {item.question}
             </CText>
             <View style={[Styles.row, Styles.aitCenter, Styles.mTop15]}>
-              <CText cStyle={[Styles.f14, Styles.mTop5]}>ANS :</CText>
+              <CText cStyle={[Styles.f13, Styles.mTop5]}>ANS :</CText>
               <View
                 style={[
                   Styles.padV5,
@@ -139,7 +139,7 @@ class PreviewInspection extends React.Component {
                   },
                   Styles.mLt10,
                 ]}>
-                <CText cStyle={[Styles.f14, Styles.cFFF]}>{item.status}</CText>
+                <CText cStyle={[Styles.f13, Styles.cFFF]}>{item.status}</CText>
               </View>
             </View>
             <View
@@ -521,7 +521,7 @@ class PreviewInspection extends React.Component {
           cStyle={[
             {alignSelf: 'center', fontSize: 16, fontWeight: 'bold'},
             Styles.marV10,
-            Styles.cblue,
+            Styles.cBlue,
           ]}>
           Preview Inspection
         </CText>
@@ -543,7 +543,7 @@ class PreviewInspection extends React.Component {
               Area Being Inspected
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               {this.props.SignupState.checklistAddress}
             </CText>
           </View>
@@ -565,7 +565,7 @@ class PreviewInspection extends React.Component {
               Inspection Material Quantity
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               {this.props.SignupState.materialname}
             </CText>
           </View>
@@ -588,7 +588,7 @@ class PreviewInspection extends React.Component {
                 ]}>
                 Inspection Material Quantity
               </CText>
-              <CText cStyle={[Styles.f14, Styles.marH15, Styles.mTop5]}>
+              <CText cStyle={[Styles.f13, Styles.marH15, Styles.mTop5]}>
                 {this.props.SignupState.inspectionQuantity}
               </CText>
             </View>
@@ -602,7 +602,7 @@ class PreviewInspection extends React.Component {
                 ]}>
                 UOM
               </CText>
-              <CText cStyle={[Styles.f14, Styles.marH15, Styles.mTop5]}>
+              <CText cStyle={[Styles.f13, Styles.marH15, Styles.mTop5]}>
                 {this.props.SignupState.UOM}
               </CText>
             </View>
@@ -625,7 +625,7 @@ class PreviewInspection extends React.Component {
               Responsible Contractor
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               {this.props.SignupState.contractor}
             </CText>
           </View>
@@ -647,7 +647,7 @@ class PreviewInspection extends React.Component {
               Project Name
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               {this.props.SignupState.selectedProject.name}
             </CText>
           </View>
@@ -668,7 +668,7 @@ class PreviewInspection extends React.Component {
               Project Location
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               {this.props.SignupState.selectedProject.location}
             </CText>
             {/* <CText
@@ -693,7 +693,7 @@ class PreviewInspection extends React.Component {
               Date of Inspection
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               {moment(Date.now()).format('MMM D YYYY hh:mm A')}
             </CText>
           </View>
@@ -714,7 +714,7 @@ class PreviewInspection extends React.Component {
               Document Number
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               Doc xxx xxx xxx
             </CText>
           </View>
@@ -786,7 +786,7 @@ class PreviewInspection extends React.Component {
                   },
                 ]}>
                 <View style={[{width: 350}, Styles.bgFFF]}>
-                  <View style={[Styles.blue]}>
+                  <View style={[Styles.cBlue]}>
                     <CText
                       cStyle={[
                         Styles.f16,
@@ -805,7 +805,7 @@ class PreviewInspection extends React.Component {
                       src={require('../images/done.png')}
                     />
 
-                    <CText cStyle={[Styles.f14, Styles.marV10, Styles.cBlk]}>
+                    <CText cStyle={[Styles.f13, Styles.marV10, Styles.cBlk]}>
                       Your Inspection has been Successfully Completed
                     </CText>
                   </View>
@@ -813,10 +813,9 @@ class PreviewInspection extends React.Component {
                     onPress={() => this.handleSuccessInspectionModal()}
                     activeOpacity={0.6}
                     style={[
-                      Styles.orange,
                       Styles.marH30,
                       Styles.mBtm20,
-                      {borderRadius: 5},
+                      {borderRadius: 5, backgroundColor: 'orange'},
                     ]}>
                     <CText
                       cStyle={[
@@ -870,7 +869,7 @@ class PreviewInspection extends React.Component {
                     {width: Dimensions.get('window').width - 40},
                     Styles.bgFFF,
                   ]}>
-                  <View style={[Styles.blue]}>
+                  <View style={[Styles.cBlue]}>
                     <CText
                       cStyle={[
                         Styles.f16,
@@ -914,7 +913,7 @@ class PreviewInspection extends React.Component {
                       ]}
                       onPress={() => this.setMode()}>
                       <CText cStyle={[Styles.mLt10, {fontWeight: '600'}]}>
-                        {this.state.date == ''
+                        {this.state.datetime == ''
                           ? `${new Date().getDate()}-${new Date().getMonth()}-${new Date().getFullYear()}`
                           : this.state.datetime}
                       </CText>
@@ -970,10 +969,9 @@ class PreviewInspection extends React.Component {
                     onPress={() => this.handleScheduledInspectionData()}
                     activeOpacity={0.6}
                     style={[
-                      Styles.orange,
                       Styles.marH30,
                       Styles.mBtm20,
-                      {borderRadius: 5},
+                      {borderRadius: 5, backgroundColor: 'orange'},
                     ]}>
                     <CText
                       cStyle={[
@@ -1023,7 +1021,7 @@ class PreviewInspection extends React.Component {
                   },
                 ]}>
                 <View style={[{width: 350}, Styles.bgFFF]}>
-                  <View style={[Styles.blue]}>
+                  <View style={[Styles.cBlue]}>
                     <CText
                       cStyle={[
                         Styles.f16,
@@ -1038,13 +1036,13 @@ class PreviewInspection extends React.Component {
 
                   <View
                     style={[Styles.aitCenter, Styles.aslCenter, Styles.marV30]}>
-                    <CText cStyle={[Styles.f14, Styles.cBlk]}>
+                    <CText cStyle={[Styles.f13, Styles.cBlk]}>
                       It look like you have selected
                     </CText>
-                    <CText cStyle={[Styles.f14, Styles.cBlk, Styles.aslCenter]}>
+                    <CText cStyle={[Styles.f13, Styles.cBlk, Styles.aslCenter]}>
                       "not compiled" for questions
                     </CText>
-                    <CText cStyle={[Styles.f14, Styles.cBlk, Styles.aslCenter]}>
+                    <CText cStyle={[Styles.f13, Styles.cBlk, Styles.aslCenter]}>
                       select a time for re-inspection
                     </CText>
                   </View>
@@ -1057,10 +1055,9 @@ class PreviewInspection extends React.Component {
                     }}
                     activeOpacity={0.6}
                     style={[
-                      Styles.orange,
                       Styles.marH30,
                       Styles.mBtm20,
-                      {borderRadius: 5},
+                      {borderRadius: 5, backgroundColor: 'orange'},
                     ]}>
                     <CText
                       cStyle={[

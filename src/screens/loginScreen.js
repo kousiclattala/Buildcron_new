@@ -1,19 +1,15 @@
 import React from 'react';
 import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
   View,
   Text,
   StatusBar,
   TouchableOpacity,
   KeyboardAvoidingView,
-  Image,
   Dimensions,
   Platform,
   Button,
 } from 'react-native';
-import {Styles, CText, CInput, CImage, CSpinner} from '../common';
+import {Styles, CInput, CImage, CSpinner} from '../common';
 import {bindActionCreators} from 'redux';
 import {ActionSignUp} from '../Store/Actions/SignUpAction';
 import {connect} from 'react-redux';
@@ -23,7 +19,6 @@ import Utils from '../common/Utils';
 import axios from 'axios';
 import {TextInput, DefaultTheme} from 'react-native-paper';
 import Snackbar from 'react-native-snackbar';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 class LoginScreen extends React.Component {
   constructor() {
@@ -40,55 +35,27 @@ class LoginScreen extends React.Component {
       password: '',
       email: '',
     });
-
-    // this.getToken();
-    this.getAllKeys();
   }
 
-  getAllKeys = async () => {
-    var keys = [];
-    keys = await AsyncStorage.getAllKeys();
-
-    var data = await AsyncStorage.multiGet(keys);
-
-    // console.log('data from async storage', data);
-  };
-
-  getToken = async () => {
-    var token = await AsyncStorage.getItem('access_token');
-
-    if (token === null) {
-      this.props.navigation.navigate('LoginScreen');
-    } else {
-      this.props.navigation.navigate('LoginPinScreen');
-    }
-  };
-
-  verifyMobileNumber() {
+  verifyMobileNumber = async () => {
     // TODO: uncomment later
 
     // this.props.navigation.navigate('footer');
     const mobileno = this.state.phone;
 
     if (!this.state.phone) {
-      // Utils.dialogBox('Please enter mobile number', '');
-
       Snackbar.show({
         text: 'Please Enter Mobile Number',
         textColor: '#fff',
         backgroundColor: '#FF6600',
       });
     } else if (mobileno.toString().length < 10) {
-      // Utils.dialogBox('Please enter valid mobile number', '');
-
       Snackbar.show({
         text: 'Please Enter valid Mobile Number',
         textColor: '#fff',
         backgroundColor: '#FF6600',
       });
     } else if (mobileno.toString().length > 10) {
-      // Utils.dialogBox('Please enter valid mobile number', '');
-
       Snackbar.show({
         text: 'Enter Mobile Number without spaces and special characters',
         textColor: '#fff',
@@ -97,18 +64,18 @@ class LoginScreen extends React.Component {
     } else {
       this.props.getActionSignUp({
         spinnerBool: true,
-        PhoneNumber: '+91' + this.state.phone,
+        PhoneNumber: this.state.phone,
       });
       // console.log('mobile number ', this.state.phone);
 
-      axios({
-        method: 'post',
-        url: Config.routes.otpRequestUrl,
-        data: {
-          // mobile: this.props.SignupState.PhoneNumber,
-          // password: '1234',
-          phone_number: '+91' + this.state.phone,
-        },
+      await axios({
+        method: 'GET',
+        url: `${Config.routes.otpURL}/${this.state.phone}/`,
+        // data: {
+        //   // mobile: this.props.SignupState.PhoneNumber,
+        //   // password: '1234',
+        //   phone_number: '+91' + this.state.phone,
+        // },
       })
         .then((response) => {
           this.props.getActionSignUp({spinnerBool: false});
@@ -122,26 +89,26 @@ class LoginScreen extends React.Component {
               backgroundColor: '#FF6600',
             });
           } else {
-            this.props.getActionSignUp({otp: response.data.otp});
+            // this.props.getActionSignUp({otp: response.data.otp});
 
             Snackbar.show({
-              text: `Your OTP for Login ${response.data.otp}`,
+              text: `${response.data.success}`,
               textColor: '#fff',
               backgroundColor: '#FF6600',
-              duration: Snackbar.LENGTH_INDEFINITE,
+              duration: Snackbar.LENGTH_SHORT,
             });
 
             this.props.navigation.navigate('OTPverificationScreen');
           }
         })
         .catch((error) => {
-          //   console.warn(error.response.data.message);
+          console.warn(error);
           this.props.getActionSignUp({spinnerBool: false});
           // console.log('error login  - - - - ', error.response);
           // Utils.dialogBox('Invalid Credentials', '');
         });
     }
-  }
+  };
 
   // getOtp(){
   //     const self = this;
@@ -196,7 +163,7 @@ class LoginScreen extends React.Component {
 
             <Text
               style={[
-                Styles.ffMbold,
+                Styles.fWbold,
                 Styles.aslCenter,
                 {color: '#FF6600', fontSize: 17},
                 Styles.mTop20,
@@ -268,7 +235,8 @@ class LoginScreen extends React.Component {
 
             <TouchableOpacity
               onPress={() => {
-                this.verifyMobileNumber();
+                // this.verifyMobileNumber();
+                this.props.navigation.navigate('footer');
               }}
               style={[
                 {backgroundColor: '#FF6600'},
@@ -278,7 +246,7 @@ class LoginScreen extends React.Component {
               activeOpacity={0.6}>
               <Text
                 style={[
-                  Styles.f14,
+                  Styles.f13,
                   Styles.padH10,
                   Styles.padV10,
                   Styles.aslCenter,

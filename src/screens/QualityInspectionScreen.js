@@ -96,7 +96,7 @@ class QualityInspectionScreen extends React.Component {
         ]}
         key={index}>
         <CText
-          cStyle={[{marginLeft: 10, fontSize: 13, flex: 0.95}, Styles.cblue]}>
+          cStyle={[{marginLeft: 10, fontSize: 13, flex: 0.95}, Styles.cBlue]}>
           {item.name}
         </CText>
         <CImage
@@ -173,7 +173,7 @@ class QualityInspectionScreen extends React.Component {
           cStyle={[
             {alignSelf: 'center', fontSize: 16, fontWeight: 'bold'},
             Styles.marV15,
-            Styles.cblue,
+            Styles.cBlue,
           ]}>
           Quality Inspection Library
         </CText>

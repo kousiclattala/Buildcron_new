@@ -61,7 +61,7 @@ export default class DrawerContent extends React.Component {
               // style={[Styles.row, Styles.mLt20, Styles.aitCenter]}
               style={[Styles.mLt30, {flex: 1}]}>
               <CText
-                cStyle={[Styles.cFFF, Styles.f25, Styles.fWbold, Styles.mlt10]}>
+                cStyle={[Styles.cFFF, Styles.f25, Styles.fWbold, Styles.mLt10]}>
                 Settings
               </CText>
             </TouchableOpacity>
@@ -79,7 +79,7 @@ export default class DrawerContent extends React.Component {
               //   Styles.mRt20,
               // ]}
               style={[
-                Styles.mlt40,
+                Styles.mLt30,
                 Styles.aitCenter,
                 Styles.aslEnd,
                 {flex: 1},

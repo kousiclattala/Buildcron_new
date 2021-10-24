@@ -11,16 +11,7 @@ import {
 import {TextInput} from 'react-native-paper';
 import {Styles, CImage, CText, CInput} from '../common';
 import DropDownMenu from '../common/DropDownMenu';
-import {Portal, Dialog, Button, Paragraph} from 'react-native-paper';
-import {color} from 'react-native-reanimated';
-import Modal from '../common/Modal';
-import FileViewer from 'react-native-file-viewer';
-import DateTimePicker from '@react-native-community/datetimepicker';
-import RNFS from 'react-native-fs';
-import {htmlToPdf} from '../common/Report';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import {DrawerActions} from 'react-navigation-drawer';
-import {file} from '@babel/types';
 
 const MyStatusBar = ({backgroundColor, ...props}) => (
   <View style={[Styles.statusBar, {backgroundColor}]}>
@@ -85,7 +76,7 @@ class ContactUs extends Component {
           cStyle={[
             {alignSelf: 'center', fontSize: 16},
             Styles.marV10,
-            Styles.cblue,
+            Styles.cBlue,
           ]}>
           Contact Technical Support
         </CText>
@@ -101,7 +92,7 @@ class ContactUs extends Component {
             <CText
               cStyle={[
                 {fontSize: 14, marginTop: 10, marginLeft: 15},
-                Styles.cblue,
+                Styles.cBlue,
               ]}>
               Your Email Address *
             </CText>
@@ -119,7 +110,7 @@ class ContactUs extends Component {
                 Styles.padV5,
                 Styles.marH15,
                 Styles.bgFFF,
-                Styles.f14,
+                Styles.f13,
                 {fontWeight: '500'},
               ]}
             />
@@ -134,7 +125,7 @@ class ContactUs extends Component {
             <CText
               cStyle={[
                 {fontSize: 14, marginTop: 10, marginLeft: 15},
-                Styles.cblue,
+                Styles.cBlue,
               ]}>
               Subject *
             </CText>
@@ -152,7 +143,7 @@ class ContactUs extends Component {
                 Styles.padV5,
                 Styles.marH15,
                 Styles.bgFFF,
-                Styles.f14,
+                Styles.f13,
                 {fontWeight: '500'},
               ]}
             />
@@ -167,7 +158,7 @@ class ContactUs extends Component {
             <CText
               cStyle={[
                 {fontSize: 14, marginTop: 10, marginLeft: 15},
-                Styles.cblue,
+                Styles.cBlue,
               ]}>
               Description *
             </CText>
@@ -186,7 +177,7 @@ class ContactUs extends Component {
                 Styles.padV5,
                 Styles.marH15,
                 Styles.bgFFF,
-                Styles.f14,
+                Styles.f13,
                 {fontWeight: '500'},
               ]}
             />

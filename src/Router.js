@@ -199,12 +199,6 @@ const appNav = createStackNavigator(
         headerShown: false,
       },
     },
-    FAQScreen: {
-      screen: FAQScreen,
-      navigationOptions: {
-        headerShown: false,
-      },
-    },
     InspectionSchedule: {
       screen: InspectionSchedule,
       navigationOptions: {
@@ -235,12 +229,6 @@ const appNav = createStackNavigator(
         headerShown: false,
       },
     },
-    ContactUs: {
-      screen: ContactUs,
-      navigationOptions: {
-        headerShown: false,
-      },
-    },
   },
   {
     initialRouteName: 'LoginPinScreen',
@@ -265,6 +253,18 @@ const DrawerNav = createDrawerNavigator(
   {
     //  HomeScreen:HomeScreen,
     footer: BottomBar,
+    ContactUs: {
+      screen: ContactUs,
+      navigationOptions: {
+        headerShown: false,
+      },
+    },
+    FAQScreen: {
+      screen: FAQScreen,
+      navigationOptions: {
+        headerShown: false,
+      },
+    },
   },
   {
     initialRouteName: 'footer',
@@ -292,7 +292,7 @@ const SwitchRouter = createSwitchNavigator(
     Draw: DrawerNav,
   },
   {
-    initialRouteName: 'loading',
+    initialRouteName: 'auth',
     backBehavior: 'order',
   },
 );

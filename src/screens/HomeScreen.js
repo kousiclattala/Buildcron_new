@@ -33,7 +33,6 @@ import DropDownMenu from '../common/DropDownMenu';
 import {DrawerActions} from 'react-navigation-drawer';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Snackbar from 'react-native-snackbar';
-import SystemSetting from 'react-native-system-setting';
 
 const MyStatusBar = ({backgroundColor, ...props}) => (
   <View style={[Styles.statusBar, {backgroundColor}]}>
@@ -57,23 +56,11 @@ class HomeScreen extends React.Component {
   async componentDidMount() {
     this.requestPermissions();
 
-    this.getAllKeys();
+    // this.getAllKeys();
 
     this.getToken();
 
     this.getDeviceLocation();
-    this.locationListener = await SystemSetting.addLocationListener(
-      (enable) => {
-        this.setState({
-          locationEnable: enable,
-        });
-      },
-    );
-
-    console.log(
-      'questions data --->',
-      this.props.ReinforcementState.reinforcementData,
-    );
   }
 
   getAllKeys = async () => {
@@ -86,50 +73,16 @@ class HomeScreen extends React.Component {
   };
 
   getDeviceLocation = () => {
-    SystemSetting.isLocationEnabled().then((status) => {
-      // console.log('location status -->', status);
-
-      if (status == false) {
-        Alert.alert('Enable Location', 'Please enable Location Service', [
-          {
-            text: 'OK',
-            onPress: () => {
-              SystemSetting.switchLocation(() => {
-                GetLocation.getCurrentPosition({
-                  enableHighAccuracy: true,
-                  timeout: 15000,
-                  showLocationDailog: true,
-                })
-                  .then((location) => {
-                    this.props.getActionSignUp({
-                      deviceLocation: location,
-                    });
-                  })
-                  .catch((err) => console.log(err));
-              });
-            },
-          },
-          {
-            text: 'Cancel',
-            onPress: () => {
-              //
-            },
-          },
-        ]);
-      } else {
-        GetLocation.getCurrentPosition({
-          enableHighAccuracy: true,
-          timeout: 15000,
-          showLocationDailog: true,
-        })
-          .then((location) => {
-            this.props.getActionSignUp({
-              deviceLocation: location,
-            });
-          })
-          .catch((err) => console.log(err));
-      }
-    });
+    GetLocation.getCurrentPosition({
+      enableHighAccuracy: true,
+      timeout: 15000,
+    })
+      .then((location) => {
+        this.props.SignupState.getActionSignUp({
+          deviceLocation: location,
+        });
+      })
+      .catch((err) => console.log(err));
   };
 
   requestPermissions = async () => {
@@ -217,41 +170,6 @@ class HomeScreen extends React.Component {
     }
   };
 
-  getScheduledData = async () => {
-    try {
-      var data = JSON.stringify(
-        this.props.ScheduleInspectionState.reScheduledInspectionData,
-      );
-
-      if (data == '[]') {
-        null;
-      } else {
-        await AsyncStorage.setItem('@data', data)
-          .then(() => {
-            // console.log('successfully added to async');
-            // this.props.getScheduleInspection({
-            //   reScheduledInspectionData: [],
-            // });
-            this.props.getScheduleInspection();
-          })
-          .catch((err) => console.log(err));
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  sendChecklistData() {
-    // console.log('checklists from state --> ', this.state.checklists);
-    // console.log('questions from state --> ', this.state.questions);
-
-    this.props.getActionSignUp({
-      checklistQuestions: this.state.questions,
-    });
-
-    this.props.getActionSignUp({checklists: this.state.checklists});
-  }
-
   renderSpinner() {
     if (this.props.SignupState.spinnerBool) {
       return <CSpinner />;
@@ -309,7 +227,7 @@ class HomeScreen extends React.Component {
             </View>
             <TouchableOpacity
               onPress={() => {
-                this.props.navigation.navigate('EmployeePreviewScreen');
+                this.props.navigation.navigate('NotificationScreen');
               }}>
               <CImage
                 cStyle={[{height: 30, width: 30}]}
@@ -351,7 +269,7 @@ class HomeScreen extends React.Component {
                   cStyle={[{height: 70, width: 70}]}
                   src={require('../images/QualityInspection.png')}
                 />
-                <CText cStyle={[Styles.cblue, Styles.f15]}>
+                <CText cStyle={[Styles.cBlue, Styles.f15]}>
                   Quality inspection
                 </CText>
               </View>
@@ -375,7 +293,7 @@ class HomeScreen extends React.Component {
                   cStyle={[{height: 70, width: 70}]}
                   src={require('../images/SafetyInspection.png')}
                 />
-                <CText cStyle={[Styles.cblue, Styles.f15]}>
+                <CText cStyle={[Styles.cBlue, Styles.f15]}>
                   Safety Inspection
                 </CText>
               </TouchableOpacity>
@@ -404,7 +322,7 @@ class HomeScreen extends React.Component {
                   cStyle={[{height: 70, width: 70}]}
                   src={require('../images/QualityInspection.png')}
                 />
-                <CText cStyle={[Styles.cblue, Styles.f15]}>
+                <CText cStyle={[Styles.cBlue, Styles.f15]}>
                   Site Observation
                 </CText>
               </View>
@@ -426,7 +344,7 @@ class HomeScreen extends React.Component {
                   cStyle={[{height: 70, width: 70}]}
                   src={require('../images/QualityInspection.png')}
                 />
-                <CText cStyle={[Styles.cblue, Styles.f15]}>Daily Report</CText>
+                <CText cStyle={[Styles.cBlue, Styles.f15]}>Daily Report</CText>
               </View>
             </TouchableOpacity>
           </View>
@@ -453,7 +371,7 @@ class HomeScreen extends React.Component {
                   cStyle={[{height: 70, width: 70}]}
                   src={require('../images/SiteReport.png')}
                 />
-                <CText cStyle={[Styles.cblue, Styles.f15]}>
+                <CText cStyle={[Styles.cBlue, Styles.f15]}>
                   Site NC Report
                 </CText>
               </View>
@@ -475,7 +393,7 @@ class HomeScreen extends React.Component {
                   cStyle={[{height: 70, width: 70}]}
                   src={require('../images/Sitephotos.png')}
                 />
-                <CText cStyle={[Styles.cblue, Styles.f15]}>Site Photos</CText>
+                <CText cStyle={[Styles.cBlue, Styles.f15]}>Site Photos</CText>
               </View>
             </TouchableOpacity>
           </View>

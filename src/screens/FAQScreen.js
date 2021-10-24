@@ -7,27 +7,13 @@ import {
   Text,
   StatusBar,
   TouchableOpacity,
-  KeyboardAvoidingView,
-  Image,
-  Dimensions,
-  Platform,
-  Button,
-  Keyboard,
-  FlatList,
-  Modal,
 } from 'react-native';
 import {Styles, CText, CInput, CImage, CSpinner} from '../common';
 import {bindActionCreators} from 'redux';
 import {ActionSignUp} from '../Store/Actions/SignUpAction';
 import {connect} from 'react-redux';
 import Config from '../Config';
-import Utils from '../common/Utils';
-//import SplashScreen from 'react-native-splash-screen';
 import axios from 'axios';
-import {TextInput, DefaultTheme, Portal, Dailog} from 'react-native-paper';
-import ImagePicker from 'react-native-image-crop-picker';
-import ImgToBase64 from 'react-native-image-base64';
-import Snackbar from 'react-native-snackbar';
 import DropDownMenu from '../common/DropDownMenu';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -266,7 +252,7 @@ class FAQScreen extends React.Component {
         <CText
           cStyle={[
             {alignSelf: 'center', fontSize: 16},
-            Styles.cblue,
+            Styles.cBlue,
             Styles.padV15,
           ]}>
           Frequently Asked Questions (FAQs)

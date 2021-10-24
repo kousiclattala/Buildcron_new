@@ -61,6 +61,7 @@ class NCReportChecklist extends React.Component {
       datetime: '',
       show: false,
       count: 0,
+      picturesPath: '',
     };
   }
 
@@ -414,30 +415,36 @@ class NCReportChecklist extends React.Component {
     ]);
   };
 
-  // TODO: add stage 2 checklist status and note and also project data to data
+  // TODO: add stage 2 checklist status and note
+  //TODO: also recomended_action, schedule_date to data
   sendNCReportDataToBack = async (data) => {
     var token = await AsyncStorage.getItem('access_token');
 
     var data = {
+      id: this.props.navigation.getParam('id'),
       area: data.NCReportData.areaInspected,
       contractor: {
         id: data.contractorData.id,
+        name: data.contractorData.maker.name,
       },
       project: {
-        id: 5,
+        id: this.props.SignupState.selectedProject.id,
+        name: this.props.SignupState.selectedProject.name,
       },
-      category: data.NCReportData.category,
-      severity: data.NCReportData.severityLevel,
-      root_cause: data.NCReportData.rootCause,
-      root_cause_number: data.NCReportData.contractorClauseNo,
-      recomended_action: data.NCReportData.recommendedCorrectiveAction,
       status: data.siteNCRChecklist,
       reason_to_uncomplied: data.siteNCRChecklistNote,
+      category: data.NCReportData.category,
+      severity: data.NCReportData.severityLevel,
+      root_cause_number: data.NCReportData.contractorClauseNo,
+      root_cause: data.NCReportData.rootCause,
+      report: null,
     };
 
     await axios({
-      method: 'POST',
-      url: Config.routes.NCReportAPI,
+      method: 'PUT',
+      url: `${Config.routes.NCReportPUTAPI}/${this.props.navigation.getParam(
+        'id',
+      )}`,
       headers: {
         Authorization: 'JWT ' + token,
       },
@@ -534,7 +541,7 @@ class NCReportChecklist extends React.Component {
         <CText
           cStyle={[
             {alignSelf: 'center', fontSize: 16, fontWeight: 'bold'},
-            Styles.cblue,
+            Styles.cBlue,
             Styles.padV15,
           ]}>
           Non Compliance Report (NCR)
@@ -557,7 +564,7 @@ class NCReportChecklist extends React.Component {
               Area Being Inspected
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               {this.props.SignupState.NCReportData.areaInspected}
             </CText>
           </View>
@@ -579,7 +586,7 @@ class NCReportChecklist extends React.Component {
               Contractor Responsible
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               {this.props.SignupState.NCReportData.contractorResponsible}
             </CText>
           </View>
@@ -601,7 +608,7 @@ class NCReportChecklist extends React.Component {
               Category
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               {this.props.SignupState.NCReportData.category}
             </CText>
             <View
@@ -693,7 +700,7 @@ class NCReportChecklist extends React.Component {
               Root Cause
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               {this.props.SignupState.NCReportData.rootCause}
             </CText>
           </View>
@@ -715,7 +722,7 @@ class NCReportChecklist extends React.Component {
               Contractor Clause No.
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               {this.props.SignupState.NCReportData.contractorClauseNo}
             </CText>
           </View>
@@ -737,7 +744,7 @@ class NCReportChecklist extends React.Component {
               Recommended Corrective Action
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               {this.props.SignupState.NCReportData.recommendedCorrectiveAction}
             </CText>
           </View>
@@ -759,7 +766,7 @@ class NCReportChecklist extends React.Component {
               Project Name
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               {this.props.SignupState.selectedProject.name}
             </CText>
           </View>
@@ -781,7 +788,7 @@ class NCReportChecklist extends React.Component {
               Project Location
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               {this.props.SignupState.selectedProject.location}
             </CText>
             {/* <CText
@@ -807,7 +814,7 @@ class NCReportChecklist extends React.Component {
               Date of Inspection
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               {moment(Date.now()).format('MMM D YYYY hh:mm A')}
             </CText>
           </View>
@@ -829,7 +836,7 @@ class NCReportChecklist extends React.Component {
               Document Number
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               Doc xxx xxx xxx
             </CText>
           </View>
@@ -854,7 +861,7 @@ class NCReportChecklist extends React.Component {
                   ?
                 </CText>
                 <View style={[Styles.row, Styles.aitCenter, Styles.mTop15]}>
-                  <CText cStyle={[Styles.f14, Styles.mTop5, Styles.marH15]}>
+                  <CText cStyle={[Styles.f13, Styles.mTop5, Styles.marH15]}>
                     ANS :
                   </CText>
                   <View
@@ -870,7 +877,7 @@ class NCReportChecklist extends React.Component {
                       },
                       Styles.mLt10,
                     ]}>
-                    <CText cStyle={[Styles.f14, Styles.cFFF]}>
+                    <CText cStyle={[Styles.f13, Styles.cFFF]}>
                       {this.props.SignupState.siteNCRChecklist}
                     </CText>
                   </View>
@@ -1128,7 +1135,7 @@ class NCReportChecklist extends React.Component {
                   },
                 ]}>
                 <View style={[{width: 350}, Styles.bgFFF]}>
-                  <View style={[Styles.blue]}>
+                  <View style={[Styles.cBlue]}>
                     <CText
                       cStyle={[
                         Styles.f16,
@@ -1147,7 +1154,7 @@ class NCReportChecklist extends React.Component {
                       src={require('../images/done.png')}
                     />
 
-                    <CText cStyle={[Styles.f14, Styles.marV10, Styles.cBlk]}>
+                    <CText cStyle={[Styles.f13, Styles.marV10, Styles.cBlk]}>
                       Your Inspection has been Successfully Completed
                     </CText>
                   </View>
@@ -1155,10 +1162,9 @@ class NCReportChecklist extends React.Component {
                     onPress={() => this.handleSuccessInspectionModal()}
                     activeOpacity={0.6}
                     style={[
-                      Styles.orange,
                       Styles.marH30,
                       Styles.mBtm20,
-                      {borderRadius: 5},
+                      {borderRadius: 5, color: 'orange'},
                     ]}>
                     <CText
                       cStyle={[
@@ -1214,7 +1220,7 @@ class NCReportChecklist extends React.Component {
                     {width: Dimensions.get('window').width - 40},
                     Styles.bgFFF,
                   ]}>
-                  <View style={[Styles.blue]}>
+                  <View style={[Styles.cBlue]}>
                     <CText
                       cStyle={[
                         Styles.f16,
@@ -1258,7 +1264,7 @@ class NCReportChecklist extends React.Component {
                       ]}
                       onPress={() => this.setMode()}>
                       <CText cStyle={[Styles.mLt10, {fontWeight: '600'}]}>
-                        {this.state.date == ''
+                        {this.state.datetime == ''
                           ? `${new Date().getDate()}-${new Date().getMonth()}-${new Date().getFullYear()}`
                           : this.state.datetime}
                       </CText>
@@ -1314,10 +1320,9 @@ class NCReportChecklist extends React.Component {
                     onPress={() => this.handleScheduledInspectionData()}
                     activeOpacity={0.6}
                     style={[
-                      Styles.orange,
                       Styles.marH30,
                       Styles.mBtm20,
-                      {borderRadius: 5},
+                      {borderRadius: 5, color: 'orange'},
                     ]}>
                     <CText
                       cStyle={[
@@ -1369,7 +1374,7 @@ class NCReportChecklist extends React.Component {
                   },
                 ]}>
                 <View style={[{width: 350}, Styles.bgFFF]}>
-                  <View style={[Styles.blue]}>
+                  <View style={[Styles.cBlue]}>
                     <CText
                       cStyle={[
                         Styles.f16,
@@ -1384,13 +1389,13 @@ class NCReportChecklist extends React.Component {
 
                   <View
                     style={[Styles.aitCenter, Styles.aslCenter, Styles.marV30]}>
-                    <CText cStyle={[Styles.f14, Styles.cBlk]}>
+                    <CText cStyle={[Styles.f13, Styles.cBlk]}>
                       It look like you have selected
                     </CText>
-                    <CText cStyle={[Styles.f14, Styles.cBlk, Styles.aslCenter]}>
+                    <CText cStyle={[Styles.f13, Styles.cBlk, Styles.aslCenter]}>
                       "not compiled" for questions
                     </CText>
-                    <CText cStyle={[Styles.f14, Styles.cBlk, Styles.aslCenter]}>
+                    <CText cStyle={[Styles.f13, Styles.cBlk, Styles.aslCenter]}>
                       select a time for re-inspection
                     </CText>
                   </View>
@@ -1403,10 +1408,9 @@ class NCReportChecklist extends React.Component {
                     }}
                     activeOpacity={0.6}
                     style={[
-                      Styles.orange,
                       Styles.marH30,
                       Styles.mBtm20,
-                      {borderRadius: 5},
+                      {borderRadius: 5, color: 'orange'},
                     ]}>
                     <CText
                       cStyle={[

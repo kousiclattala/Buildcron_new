@@ -162,7 +162,7 @@ class SearchScreen extends Component {
           cStyle={[
             {alignSelf: 'center', fontSize: 16},
             Styles.marV10,
-            Styles.cblue,
+            Styles.cBlue,
           ]}>
           Search Page
         </CText>
@@ -230,7 +230,7 @@ class SearchScreen extends Component {
                 cStyle={[{height: 37, width: 32, right: 5}]}
                 src={require('../images/pdf.png')}
               />
-              <CText cStyle={[{fontSize: 15, flex: 1}, Styles.cblue]}>
+              <CText cStyle={[{fontSize: 15, flex: 1}, Styles.cBlue]}>
                 {this.state.selectedFile.name}
               </CText>
             </View>

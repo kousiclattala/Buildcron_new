@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -41,7 +41,7 @@ const MyStatusBar = ({backgroundColor, ...props}) => (
   </View>
 );
 
-class DailyReportScreen extends React.Component {
+class DailyReportScreen extends Component {
   constructor() {
     super();
     this.state = {
@@ -59,7 +59,7 @@ class DailyReportScreen extends React.Component {
       picturesPath: '',
       weatherData: {},
       weather: {},
-      weatherEffect: '',
+      weatherEffected: '',
     };
   }
 
@@ -380,7 +380,7 @@ class DailyReportScreen extends React.Component {
           cStyle={[
             {alignSelf: 'center', fontSize: 16, fontWeight: 'bold'},
             Styles.marV15,
-            Styles.cblue,
+            Styles.cBlue,
           ]}>
           Daily Report
         </CText>
@@ -394,7 +394,7 @@ class DailyReportScreen extends React.Component {
             <CText
               cStyle={[
                 {fontSize: 18, marginBottom: 10, marginLeft: 15},
-                Styles.cblue,
+                Styles.cBlue,
               ]}>
               Area Responsible
             </CText>
@@ -450,13 +450,14 @@ class DailyReportScreen extends React.Component {
               }}>
               <Text
                 style={[
-                  Styles.cblue,
+                  Styles.cBlue,
                   {
                     fontSize: 16,
                     fontWeight: '700',
                   },
                 ]}>
-                {this.state.weatherData.name}
+                {/* {this.state.weatherData?.name} */}
+                Hyderabad
               </Text>
               <Text
                 style={{
@@ -464,7 +465,8 @@ class DailyReportScreen extends React.Component {
                   fontWeight: '700',
                   color: '#000',
                 }}>
-                {this.state.weather?.main}
+                {/* {this.state.weather?.main} */}
+                Cloudy
               </Text>
             </View>
             <Image
@@ -486,14 +488,15 @@ class DailyReportScreen extends React.Component {
               }}>
               <Text
                 style={[
-                  Styles.cblue,
+                  Styles.cBlue,
                   {
                     fontSize: 16,
                     fontWeight: 'bold',
                     marginHorizontal: 10,
                   },
                 ]}>
-                {this.state.weatherData?.main?.temp}&deg;C
+                {/* {this.state.weatherData?.main?.temp}&deg;C */}
+                30&deg;C
               </Text>
               <Text
                 style={{
@@ -506,14 +509,15 @@ class DailyReportScreen extends React.Component {
               </Text>
               <Text
                 style={[
-                  Styles.cblue,
+                  Styles.cBlue,
                   {
                     fontSize: 16,
                     fontWeight: 'bold',
                     marginHorizontal: 10,
                   },
                 ]}>
-                {this.state.weatherData?.main?.humidity}&deg;C
+                {/* {this.state.weatherData?.main?.humidity}&deg;C */}
+                20&deg;C
               </Text>
             </View>
           </View>
@@ -527,7 +531,7 @@ class DailyReportScreen extends React.Component {
             <CText
               cStyle={[
                 {fontSize: 18, marginBottom: 10, marginLeft: 15},
-                Styles.cblue,
+                Styles.cBlue,
               ]}>
               Work effected by Weather ?
             </CText>
@@ -546,7 +550,7 @@ class DailyReportScreen extends React.Component {
               />
               <Text
                 style={[
-                  Styles.cblue,
+                  Styles.cBlue,
                   {
                     top: 7,
                     paddingRight: 10,
@@ -570,7 +574,7 @@ class DailyReportScreen extends React.Component {
               />
               <Text
                 style={[
-                  Styles.cblue,
+                  Styles.cBlue,
                   {
                     top: 7,
                     paddingRight: 10,
@@ -592,7 +596,7 @@ class DailyReportScreen extends React.Component {
             <CText
               cStyle={[
                 {fontSize: 18, marginBottom: 10, marginLeft: 15},
-                Styles.cblue,
+                Styles.cBlue,
               ]}>
               Manpower
             </CText>
@@ -636,7 +640,7 @@ class DailyReportScreen extends React.Component {
             <CText
               cStyle={[
                 {fontSize: 18, marginBottom: 10, marginLeft: 15},
-                Styles.cblue,
+                Styles.cBlue,
               ]}>
               Work carried out
             </CText>
@@ -682,7 +686,7 @@ class DailyReportScreen extends React.Component {
             <CText
               cStyle={[
                 {fontSize: 18, marginBottom: 10, marginLeft: 15},
-                Styles.cblue,
+                Styles.cBlue,
               ]}>
               Material Used
             </CText>
@@ -727,7 +731,7 @@ class DailyReportScreen extends React.Component {
             <CText
               cStyle={[
                 {fontSize: 18, marginBottom: 10, marginLeft: 15},
-                Styles.cblue,
+                Styles.cBlue,
               ]}>
               Equipment Used
             </CText>
@@ -773,7 +777,7 @@ class DailyReportScreen extends React.Component {
             <CText
               cStyle={[
                 {fontSize: 18, marginBottom: 10, marginLeft: 15},
-                Styles.cblue,
+                Styles.cBlue,
               ]}>
               Deliveries
             </CText>
@@ -819,7 +823,7 @@ class DailyReportScreen extends React.Component {
             <CText
               cStyle={[
                 {fontSize: 18, marginBottom: 10, marginLeft: 15},
-                Styles.cblue,
+                Styles.cBlue,
               ]}>
               Tests and Inspections
             </CText>
@@ -865,7 +869,7 @@ class DailyReportScreen extends React.Component {
             <CText
               cStyle={[
                 {fontSize: 18, marginBottom: 10, marginLeft: 15},
-                Styles.cblue,
+                Styles.cBlue,
               ]}>
               Delays and Issues
             </CText>
@@ -910,7 +914,7 @@ class DailyReportScreen extends React.Component {
             <CText
               cStyle={[
                 {fontSize: 18, marginBottom: 10, marginLeft: 15},
-                Styles.cblue,
+                Styles.cBlue,
               ]}>
               Safety Observations
             </CText>

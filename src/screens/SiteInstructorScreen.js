@@ -53,6 +53,7 @@ class SiteInstructorScreen extends React.Component {
       category: '',
       severityLevel: '',
       addInstructions: '',
+      picturesPath: '',
     };
   }
 
@@ -393,7 +394,7 @@ class SiteInstructorScreen extends React.Component {
           cStyle={[
             {alignSelf: 'center', fontSize: 16, fontWeight: 'bold'},
             Styles.marV15,
-            Styles.cblue,
+            Styles.cBlue,
           ]}>
           Site Observation Report
         </CText>
@@ -407,7 +408,7 @@ class SiteInstructorScreen extends React.Component {
             <CText
               cStyle={[
                 {fontSize: 18, marginBottom: 10, marginLeft: 15},
-                Styles.cblue,
+                Styles.cBlue,
               ]}>
               Area Being Inspected
             </CText>
@@ -419,9 +420,6 @@ class SiteInstructorScreen extends React.Component {
               placeholderTextColor="#666"
               keyboardType="default"
               multiline={true}
-              // ref={(input) => {
-              //   this.props.SignupState.areaInspected = input;
-              // }}
               onChangeText={(value) =>
                 this.props.getActionSignUp({
                   areaInspected: value,
@@ -486,7 +484,7 @@ class SiteInstructorScreen extends React.Component {
             <CText
               cStyle={[
                 {fontSize: 18, marginTop: 10, marginLeft: 15},
-                Styles.cblue,
+                Styles.cBlue,
               ]}>
               Contractor Responsible
             </CText>
@@ -582,9 +580,6 @@ class SiteInstructorScreen extends React.Component {
                 placeholderTextColor="#666"
                 keyboardType="default"
                 multiline={true}
-                // ref={(input) => {
-                //   this.props.SignupState.siteObservationNote = input;
-                // }}
                 onChangeText={(value) =>
                   this.props.getActionSignUp({
                     otherCategory: value,
@@ -606,7 +601,7 @@ class SiteInstructorScreen extends React.Component {
             <CText
               cStyle={[
                 {fontSize: 18, marginTop: 10, marginLeft: 15},
-                Styles.cblue,
+                Styles.cBlue,
               ]}>
               Severity Level
             </CText>
@@ -652,7 +647,7 @@ class SiteInstructorScreen extends React.Component {
             <CText
               cStyle={[
                 {fontSize: 18, marginBottom: 10, marginLeft: 15},
-                Styles.cblue,
+                Styles.cBlue,
               ]}>
               Add Observation
             </CText>
@@ -664,9 +659,6 @@ class SiteInstructorScreen extends React.Component {
               placeholderTextColor="#666"
               keyboardType="default"
               multiline={true}
-              // ref={(input) => {
-              //   this.props.SignupState.addInstructions = input;
-              // }}
               onChangeText={(value) =>
                 this.props.getActionSignUp({
                   addInstructions: value,
@@ -767,7 +759,7 @@ class SiteInstructorScreen extends React.Component {
                     {width: Dimensions.get('window').width - 50, height: 400},
                     Styles.bgFFF,
                   ]}>
-                  <View style={[Styles.blue]}>
+                  <View style={[Styles.cBlue]}>
                     <View
                       style={[
                         Styles.row,
@@ -877,7 +869,7 @@ class SiteInstructorScreen extends React.Component {
                     {width: Dimensions.get('window').width - 50, height: 400},
                     Styles.bgFFF,
                   ]}>
-                  <View style={[Styles.blue]}>
+                  <View style={[Styles.cBlue]}>
                     <View
                       style={[
                         Styles.row,
@@ -912,16 +904,19 @@ class SiteInstructorScreen extends React.Component {
                       </TouchableOpacity>
                     </View>
                   </View>
-                  <FlatList
+                  {/* <FlatList
                     data={this.props.SignupState.siteCategory}
-                    keyExtractor={(item, index) => item.id + index.toString()}
+                    keyExtractor={(item, index) => item.id + index}
                     renderItem={({item, index}) =>
                       this.categoryList(item, index)
                     }
                     extraData={this.props}
                     // horizontal={true}
                     style={[Styles.marV10]}
-                  />
+                  /> */}
+                  {this.props.SignupState.siteCategory.map((item, index) => {
+                    this.categoryList(item, index);
+                  })}
                 </View>
               </View>
             </View>
@@ -965,7 +960,7 @@ class SiteInstructorScreen extends React.Component {
                     {width: Dimensions.get('window').width - 50, height: 400},
                     Styles.bgFFF,
                   ]}>
-                  <View style={[Styles.blue]}>
+                  <View style={[Styles.cBlue]}>
                     <View
                       style={[
                         Styles.row,
@@ -1000,7 +995,7 @@ class SiteInstructorScreen extends React.Component {
                       </TouchableOpacity>
                     </View>
                   </View>
-                  <FlatList
+                  {/* <FlatList
                     data={this.props.SignupState.severityLevelData}
                     keyExtractor={(item, index) => item.id + index.toString()}
                     renderItem={({item, index}) =>
@@ -1009,7 +1004,13 @@ class SiteInstructorScreen extends React.Component {
                     extraData={this.props}
                     // horizontal={true}
                     style={[Styles.marV10]}
-                  />
+                  /> */}
+
+                  {this.props.SignupState.severityLevelData.map(
+                    (item, index) => {
+                      this.severityLevelList(item, index);
+                    },
+                  )}
                 </View>
               </View>
             </View>

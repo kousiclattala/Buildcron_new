@@ -7,20 +7,10 @@ import {
   Text,
   Image,
   BackHandler,
-  TextInput,
 } from 'react-native';
 import {Styles, CImage, CText, CInput} from '../common';
 import DropDownMenu from '../common/DropDownMenu';
 import DocumentPicker from 'react-native-document-picker';
-import {Portal, Dialog, Button, Paragraph} from 'react-native-paper';
-import {color} from 'react-native-reanimated';
-import Modal from '../common/Modal';
-
-import DateTimePicker from '@react-native-community/datetimepicker';
-import RNFS from 'react-native-fs';
-import {htmlToPdf} from '../common/Report';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import {DrawerActions} from 'react-navigation-drawer';
 
 const MyStatusBar = ({backgroundColor, ...props}) => (
   <View style={[Styles.statusBar, {backgroundColor}]}>
@@ -120,7 +110,7 @@ class EmployeePreviewScreen extends Component {
           cStyle={[
             {alignSelf: 'center', fontSize: 16},
             Styles.marV10,
-            Styles.cblue,
+            Styles.cBlue,
           ]}>
           Notification Page
         </CText>
@@ -130,7 +120,7 @@ class EmployeePreviewScreen extends Component {
           <CText
             cStyle={[
               {fontSize: 18, marginBottom: 10, marginLeft: 15},
-              Styles.cblue,
+              Styles.cBlue,
             ]}>
             Your inspection was Approved
           </CText>
@@ -171,27 +161,6 @@ class EmployeePreviewScreen extends Component {
               }}>
               {this.state.docName}
             </Text>
-            {/* <TextInput
-              theme=""
-              returnKeyType="next"
-              blurOnSubmit={false}
-              placeholder="Select Report"
-              placeholderTextColor="#666"
-              keyboardType="default"
-              multiline={true}
-              // ref={(input) => {
-              //   this.props.SignupState.areaInspected = input;
-              // }}
-              onChangeText={(value) => {}}
-              value={''}
-              style={[
-                Styles.padV5,
-                Styles.bgFFF,
-                Styles.f15,
-                Styles.brdRad5,
-                {flex: 1, opacity: 0.7, borderWidth: 0.3, borderColor: '#000'},
-              ]}
-            /> */}
           </TouchableOpacity>
 
           <TouchableOpacity

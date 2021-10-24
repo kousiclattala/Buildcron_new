@@ -35,7 +35,7 @@ class LoginPinScreen extends Component {
 
   componentDidMount() {
     this.renderComponent();
-    this.getAllKeys();
+    // this.getAllKeys();
   }
 
   getAllKeys = async () => {

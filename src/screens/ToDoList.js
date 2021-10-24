@@ -45,6 +45,7 @@ class TodoList extends React.Component {
   constructor() {
     super();
     this.state = {
+      token: '',
       scheduledData: [],
       siteData: [],
       ncrData: [],
@@ -74,6 +75,8 @@ class TodoList extends React.Component {
     // );
 
     this.getScheduledData();
+    this.getNCRdata();
+    this.getSiteData();
   }
 
   // getScheduledData = async () => {
@@ -97,34 +100,39 @@ class TodoList extends React.Component {
 
     this.setState({
       inspectionData: JSON.parse(data),
+      token: token,
     });
+  };
 
-    await axios({
-      method: 'GET',
-      url: Config.routes.siteObservationAPI,
-      headers: {
-        Authorization: 'JWT ' + token,
-      },
-    })
-      .then((res) =>
-        // console.log('site data from get -->', res.data),
-        this.setState({
-          siteData: res.data,
-        }),
-      )
-      .catch((err) => console.log(err));
-
+  getNCRdata = async () => {
     await axios({
       method: 'GET',
       url: Config.routes.NCReportAPI,
       headers: {
-        Authorization: 'JWT ' + token,
+        Authorization: 'JWT ' + this.state.token,
       },
     })
       .then((res) =>
         // console.log('ncr data from get -->', res.data),
         this.setState({
           ncrData: res.data,
+        }),
+      )
+      .catch((err) => console.log(err));
+  };
+
+  getSiteData = async () => {
+    await axios({
+      method: 'GET',
+      url: Config.routes.siteObservationAPI,
+      headers: {
+        Authorization: 'JWT ' + this.state.token,
+      },
+    })
+      .then((res) =>
+        // console.log('site data from get -->', res.data),
+        this.setState({
+          siteData: res.data,
         }),
       )
       .catch((err) => console.log(err));
@@ -446,7 +454,7 @@ class TodoList extends React.Component {
     var selectedProject = {};
 
     this.props.SignupState.projects.map((proj, index) => {
-      if (proj.id == item.project.id) {
+      if (proj.id === item.project.id) {
         selectedProject = proj;
       }
     });
@@ -471,7 +479,7 @@ class TodoList extends React.Component {
       selectedProject: selectedProject,
     });
 
-    this.props.navigation.navigate('SiteObservationChecklist');
+    this.props.navigation.navigate('SiteObservationChecklist', {id: item.id});
   }
 
   selectionOfNCReport(item) {
@@ -490,7 +498,7 @@ class TodoList extends React.Component {
     var selectedProject = [];
 
     this.props.SignupState.projects.map((proj, index) => {
-      if (proj.id == item.project.id) {
+      if (proj.id === item.project.id) {
         selectedProject = proj;
       }
     });
@@ -521,7 +529,7 @@ class TodoList extends React.Component {
       contractorData: item.contractor,
     });
 
-    this.props.navigation.navigate('NCReportChecklist');
+    this.props.navigation.navigate('NCReportChecklist', {id: item.id});
   }
 
   // selectionOfReport(item) {
@@ -597,7 +605,7 @@ class TodoList extends React.Component {
           cStyle={[
             {alignSelf: 'center', fontSize: 16, fontWeight: 'bold'},
             Styles.marV10,
-            Styles.cblue,
+            Styles.cBlue,
           ]}>
           To Do List
         </CText>
@@ -643,7 +651,7 @@ class TodoList extends React.Component {
               <CText
                 cStyle={[
                   {marginLeft: 10, fontSize: 13, flex: 0.95},
-                  Styles.cblue,
+                  Styles.cBlue,
                 ]}>
                 Quality/Safety Inspection Data
               </CText>
@@ -661,7 +669,7 @@ class TodoList extends React.Component {
               // extraData={this.props}
               style={[Styles.mBtm15, Styles.mTop15]}
             /> */}
-            {this.state.inspectionData === null
+            {this.state.inspectionData.length === 0
               ? this.qualityInspectionData(null, null)
               : this.state.inspectionData.map((item, index) =>
                   this.qualityInspectionData(item, index),
@@ -690,7 +698,7 @@ class TodoList extends React.Component {
               <CText
                 cStyle={[
                   {marginLeft: 10, fontSize: 13, flex: 0.95},
-                  Styles.cblue,
+                  Styles.cBlue,
                 ]}>
                 Site Observation Data
               </CText>
@@ -708,7 +716,7 @@ class TodoList extends React.Component {
               // extraData={this.props}
               style={[Styles.mBtm15, Styles.mTop15]}
             /> */}
-            {this.state.siteData == null
+            {this.state.siteData.length === 0
               ? this.siteObservationData(null, null)
               : this.state.siteData.map((item, index) =>
                   this.siteObservationData(item, index),
@@ -737,7 +745,7 @@ class TodoList extends React.Component {
               <CText
                 cStyle={[
                   {marginLeft: 10, fontSize: 13, flex: 0.95},
-                  Styles.cblue,
+                  Styles.cBlue,
                 ]}>
                 NCReport Data
               </CText>
@@ -746,7 +754,7 @@ class TodoList extends React.Component {
                 src={require('../images/right.png')}
               />
             </TouchableOpacity>
-            {this.state.ncrData == null
+            {this.state.ncrData.length === 0
               ? this.NCReportData(null, null)
               : this.state.ncrData.map((item, index) =>
                   this.NCReportData(item, index),

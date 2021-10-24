@@ -4,21 +4,12 @@ import {
   TouchableOpacity,
   SafeAreaView,
   StatusBar,
-  Text,
-  Image,
   BackHandler,
 } from 'react-native';
 import {Styles, CImage, CText, CInput} from '../common';
 import DropDownMenu from '../common/DropDownMenu';
-import {Portal, Dialog, Button, Paragraph} from 'react-native-paper';
-import {color} from 'react-native-reanimated';
-import Modal from '../common/Modal';
 import axios from 'axios';
-import DateTimePicker from '@react-native-community/datetimepicker';
-import RNFS from 'react-native-fs';
-import {htmlToPdf} from '../common/Report';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {DrawerActions} from 'react-navigation-drawer';
 import Config from '../Config';
 import {ActionSignUp} from '../Store/Actions/SignUpAction';
 import {connect} from 'react-redux';
@@ -101,7 +92,7 @@ class EmployeeScreen extends Component {
         ]}
         key={index}>
         <CText
-          cStyle={[{marginLeft: 10, fontSize: 13, flex: 0.95}, Styles.cblue]}>
+          cStyle={[{marginLeft: 10, fontSize: 13, flex: 0.95}, Styles.cBlue]}>
           {item.data.type}
         </CText>
         <CImage
@@ -166,7 +157,7 @@ class EmployeeScreen extends Component {
           cStyle={[
             {alignSelf: 'center', fontSize: 16},
             Styles.marV10,
-            Styles.cblue,
+            Styles.cBlue,
           ]}>
           Notification Page
         </CText>
@@ -206,7 +197,7 @@ class EmployeeScreen extends Component {
             Styles.aitCenter,
           ]}>
           <CText
-            cStyle={[{marginLeft: 10, fontSize: 13, flex: 0.95}, Styles.cblue]}>
+            cStyle={[{marginLeft: 10, fontSize: 13, flex: 0.95}, Styles.cBlue]}>
             Safety
           </CText>
           <CImage
@@ -231,7 +222,7 @@ class EmployeeScreen extends Component {
             Styles.aitCenter,
           ]}>
           <CText
-            cStyle={[{marginLeft: 10, fontSize: 13, flex: 0.95}, Styles.cblue]}>
+            cStyle={[{marginLeft: 10, fontSize: 13, flex: 0.95}, Styles.cBlue]}>
             Quality
           </CText>
           <CImage
@@ -256,7 +247,7 @@ class EmployeeScreen extends Component {
             Styles.aitCenter,
           ]}>
           <CText
-            cStyle={[{marginLeft: 10, fontSize: 13, flex: 0.95}, Styles.cblue]}>
+            cStyle={[{marginLeft: 10, fontSize: 13, flex: 0.95}, Styles.cBlue]}>
             Site Observation
           </CText>
           <CImage
@@ -281,7 +272,7 @@ class EmployeeScreen extends Component {
             Styles.aitCenter,
           ]}>
           <CText
-            cStyle={[{marginLeft: 10, fontSize: 13, flex: 0.95}, Styles.cblue]}>
+            cStyle={[{marginLeft: 10, fontSize: 13, flex: 0.95}, Styles.cBlue]}>
             NCReport
           </CText>
           <CImage
@@ -306,7 +297,7 @@ class EmployeeScreen extends Component {
             Styles.aitCenter,
           ]}>
           <CText
-            cStyle={[{marginLeft: 10, fontSize: 13, flex: 0.95}, Styles.cblue]}>
+            cStyle={[{marginLeft: 10, fontSize: 13, flex: 0.95}, Styles.cBlue]}>
             Daily Report
           </CText>
           <CImage

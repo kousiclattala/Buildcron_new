@@ -27,11 +27,7 @@ import Utils from '../common/Utils';
 import axios from 'axios';
 import {TextInput, DefaultTheme} from 'react-native-paper';
 import DropDownMenu from '../common/DropDownMenu';
-
-// import DateTimePicker from '@react-native-community/datetimepicker';
-
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
-
 import moment from 'moment';
 import {generateSlug} from 'random-word-slugs';
 // import {htmlToPdf} from '../common/Report';
@@ -95,7 +91,7 @@ class SiteObservationPreview extends React.Component {
               {item.question}
             </CText>
             <View style={[Styles.row, Styles.aitCenter, Styles.mTop15]}>
-              <CText cStyle={[Styles.f14, Styles.mTop5]}>ANS :</CText>
+              <CText cStyle={[Styles.f13, Styles.mTop5]}>ANS :</CText>
               <View
                 style={[
                   Styles.padV5,
@@ -107,7 +103,7 @@ class SiteObservationPreview extends React.Component {
                   },
                   Styles.mLt10,
                 ]}>
-                <CText cStyle={[Styles.f14, Styles.cFFF]}>{item.status}</CText>
+                <CText cStyle={[Styles.f13, Styles.cFFF]}>{item.status}</CText>
               </View>
             </View>
             <View
@@ -318,27 +314,27 @@ class SiteObservationPreview extends React.Component {
     // });
   };
 
-  addScheduleDataToAsyncStorage = async (data) => {
-    try {
-      let dataArray = [];
-      dataArray.push(data);
-      let asyncData = await AsyncStorage.getItem('@ScheduledData');
+  // addScheduleDataToAsyncStorage = async (data) => {
+  //   try {
+  //     let dataArray = [];
+  //     dataArray.push(data);
+  //     let asyncData = await AsyncStorage.getItem('@ScheduledData');
 
-      if (asyncData === null) {
-        await AsyncStorage.setItem('@ScheduledData', JSON.stringify(dataArray));
-      } else {
-        let parsedData = JSON.parse(asyncData);
-        parsedData.push(data);
+  //     if (asyncData === null) {
+  //       await AsyncStorage.setItem('@ScheduledData', JSON.stringify(dataArray));
+  //     } else {
+  //       let parsedData = JSON.parse(asyncData);
+  //       parsedData.push(data);
 
-        await AsyncStorage.setItem(
-          '@ScheduledData',
-          JSON.stringify(parsedData),
-        );
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  //       await AsyncStorage.setItem(
+  //         '@ScheduledData',
+  //         JSON.stringify(parsedData),
+  //       );
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   render() {
     return (
@@ -392,7 +388,7 @@ class SiteObservationPreview extends React.Component {
           cStyle={[
             {alignSelf: 'center', fontSize: 16, fontWeight: 'bold'},
             Styles.marV10,
-            Styles.cblue,
+            Styles.cBlue,
           ]}>
           Site Observation Inspection Preview
         </CText>
@@ -414,7 +410,7 @@ class SiteObservationPreview extends React.Component {
               Area Being Inspected
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               {this.props.SignupState.siteObservationData.areaInspected}
             </CText>
           </View>
@@ -496,7 +492,7 @@ class SiteObservationPreview extends React.Component {
               Contractor Responsible
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               {this.props.SignupState.siteObservationData.contractorResponsible}
             </CText>
           </View>
@@ -518,7 +514,7 @@ class SiteObservationPreview extends React.Component {
               Category
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               {this.props.SignupState.siteObservationData.category}
             </CText>
             <View
@@ -611,7 +607,7 @@ class SiteObservationPreview extends React.Component {
               Site Observations
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               {this.props.SignupState.siteObservationData.addObservations}
             </CText>
           </View>
@@ -633,7 +629,7 @@ class SiteObservationPreview extends React.Component {
               Project Name
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               {this.props.SignupState.selectedProject.name}
             </CText>
           </View>
@@ -654,7 +650,7 @@ class SiteObservationPreview extends React.Component {
               Project Location
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               {this.props.SignupState.selectedProject.location}
             </CText>
             {/* <CText
@@ -679,7 +675,7 @@ class SiteObservationPreview extends React.Component {
               Date of Inspection
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               {moment(Date.now()).format('MMM D YYYY hh:mm A')}
             </CText>
           </View>
@@ -700,7 +696,7 @@ class SiteObservationPreview extends React.Component {
               Document Number
             </CText>
             <CText
-              cStyle={[Styles.f14, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
+              cStyle={[Styles.f13, Styles.marH15, Styles.mTop5, Styles.mLt30]}>
               Doc xxx xxx xxx
             </CText>
           </View>
@@ -876,7 +872,7 @@ class SiteObservationPreview extends React.Component {
                   },
                 ]}>
                 <View style={[{width: 350}, Styles.bgFFF]}>
-                  <View style={[Styles.blue]}>
+                  <View style={[Styles.cBlue]}>
                     <CText
                       cStyle={[
                         Styles.f16,
@@ -895,7 +891,7 @@ class SiteObservationPreview extends React.Component {
                       src={require('../images/done.png')}
                     />
 
-                    <CText cStyle={[Styles.f14, Styles.marV10, Styles.cBlk]}>
+                    <CText cStyle={[Styles.f13, Styles.marV10, Styles.cBlk]}>
                       Your Inspection has been Successfully Completed
                     </CText>
                   </View>
@@ -903,10 +899,9 @@ class SiteObservationPreview extends React.Component {
                     onPress={() => this.handleSuccessInspectionModal()}
                     activeOpacity={0.6}
                     style={[
-                      Styles.orange,
                       Styles.marH30,
                       Styles.mBtm20,
-                      {borderRadius: 5},
+                      {borderRadius: 5, backgroundColor: 'orange'},
                     ]}>
                     <CText
                       cStyle={[
@@ -962,7 +957,7 @@ class SiteObservationPreview extends React.Component {
                     {width: Dimensions.get('window').width - 40},
                     Styles.bgFFF,
                   ]}>
-                  <View style={[Styles.blue]}>
+                  <View style={[Styles.cBlue]}>
                     <CText
                       cStyle={[
                         Styles.f16,
@@ -1006,7 +1001,7 @@ class SiteObservationPreview extends React.Component {
                       ]}
                       onPress={() => this.setMode()}>
                       <CText cStyle={[Styles.mLt10, {fontWeight: '600'}]}>
-                        {this.state.date == ''
+                        {this.state.datetime == ''
                           ? `${new Date().getDate()}-${new Date().getMonth()}-${new Date().getFullYear()}`
                           : this.state.datetime}
                       </CText>
@@ -1062,10 +1057,9 @@ class SiteObservationPreview extends React.Component {
                     onPress={() => this.handleScheduledInspectionData()}
                     activeOpacity={0.6}
                     style={[
-                      Styles.orange,
                       Styles.marH30,
                       Styles.mBtm20,
-                      {borderRadius: 5},
+                      {borderRadius: 5, backgroundColor: 'orange'},
                     ]}>
                     <CText
                       cStyle={[
@@ -1117,7 +1111,7 @@ class SiteObservationPreview extends React.Component {
                   },
                 ]}>
                 <View style={[{width: 350}, Styles.bgFFF]}>
-                  <View style={[Styles.blue]}>
+                  <View style={[Styles.cBlue]}>
                     <CText
                       cStyle={[
                         Styles.f16,
@@ -1132,13 +1126,13 @@ class SiteObservationPreview extends React.Component {
 
                   <View
                     style={[Styles.aitCenter, Styles.aslCenter, Styles.marV30]}>
-                    <CText cStyle={[Styles.f14, Styles.cBlk]}>
+                    <CText cStyle={[Styles.f13, Styles.cBlk]}>
                       It look like you have selected
                     </CText>
-                    <CText cStyle={[Styles.f14, Styles.cBlk, Styles.aslCenter]}>
+                    <CText cStyle={[Styles.f13, Styles.cBlk, Styles.aslCenter]}>
                       "not compiled" for questions
                     </CText>
-                    <CText cStyle={[Styles.f14, Styles.cBlk, Styles.aslCenter]}>
+                    <CText cStyle={[Styles.f13, Styles.cBlk, Styles.aslCenter]}>
                       select a time for re-inspection
                     </CText>
                   </View>
@@ -1151,10 +1145,9 @@ class SiteObservationPreview extends React.Component {
                     }}
                     activeOpacity={0.6}
                     style={[
-                      Styles.orange,
                       Styles.marH30,
                       Styles.mBtm20,
-                      {borderRadius: 5},
+                      {borderRadius: 5, backgroundColor: 'orange'},
                     ]}>
                     <CText
                       cStyle={[
